@@ -1,0 +1,6 @@
+{
+  // @react-native/typescript-config ships with React Native and already sets
+  // moduleResolution "bundler" (Metro is a bundler) plus the "react-native"
+  // custom condition, which is what selects 0.87's strict generated types.
+  "extends": "@react-native/typescript-config"
+}

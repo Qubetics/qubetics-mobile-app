@@ -1,0 +1,33 @@
+{
+  "originHash" : "2726de51a7756aac3021cc0d141d99a36cb175b1d037fac50ca65366cd6e41f2",
+  "pins" : [
+    {
+      "identity" : "keychainaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/KeychainAccess.git",
+      "state" : {
+        "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
+        "version" : "4.2.2"
+      }
+    },
+    {
+      "identity" : "wallet-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/trustwallet/wallet-core",
+      "state" : {
+        "branch" : "master",
+        "revision" : "1bbb81be567e1b451fb3020f7ae51fb122783dd0"
+      }
+    },
+    {
+      "identity" : "wireguard-apple",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lika-vorobeva/wireguard-apple",
+      "state" : {
+        "branch" : "fix-package",
+        "revision" : "0c9de2575a1fd1ad0b23e4a45fc40600e699bbee"
+      }
+    }
+  ],
+  "version" : 3
+}

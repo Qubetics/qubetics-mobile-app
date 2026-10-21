@@ -1,0 +1,85 @@
+# Resolve react_native_pods.rb with node to allow for hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/react-native-permissions/scripts/setup.rb'
+
+platform :ios, '15.5' # VisionCameraBarcodeScanner requires >= 15.5
+prepare_react_native_project!
+
+$RNFirebaseAsStaticFramework = true
+# react-native-firebase resolves firebase-ios-sdk through SPM when React
+# Native exposes spm_dependency. firebase-ios-sdk's SPM products are automatic
+# libraries, so every RNFB pod embeds its own copy and `use_frameworks!
+# :linkage => :static` below collides them as duplicate symbols at link time.
+# This project stays on CocoaPods (SwiftPM is still experimental in 0.87), so
+# opt out. Must be set before any target block for firebase_spm.rb to see it.
+$RNFirebaseDisableSPM = true
+
+target 'qubetics_app' do
+  config = use_native_modules!
+  use_frameworks! :linkage => :static
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    :hermes_enabled => true,
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+  # Vendored at ios/HDWalletKit -- see ios/HDWalletKit.podspec for why.
+  pod 'HDWalletKit', :path => './'
+  pod 'HDWalletKitBTC', :path => './'
+
+  target 'qubetics_appTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  setup_permissions([
+      'Camera',
+      'FaceID',
+      'Notifications',
+      'PhotoLibrary',
+  ])
+
+  post_install do |installer|
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false
+    )
+
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++20'
+        config.build_settings['CLANG_CXX_LIBRARY'] = 'libc++'
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.1'
+
+        # Suppress Folly coroutine includes — Xcode 26 SDK defines __cpp_coroutines
+        # which causes folly/Expected.h to include folly/coro/Coroutine.h (not in pod)
+        config.build_settings['OTHER_CPLUSPLUSFLAGS'] = '$(inherited) -DFOLLY_CFG_NO_COROUTINES=1'
+
+        if target.name == 'RCT-Folly'
+          # iOS 15.1+ has clock_gettime natively; prevents clockid_t typedef conflict in SDK 26.2
+          config.build_settings['OTHER_CPLUSPLUSFLAGS'] += ' -DFOLLY_HAVE_CLOCK_GETTIME=1'
+          config.build_settings['USE_HEADERMAP'] = 'NO'
+        end
+      end
+    end
+
+    # Apply the same flag to the main app target via its CocoaPods-generated xcconfigs.
+    # installer.pods_project.targets only covers Pod targets; the app target is a
+    # separate Xcode project that imports these xcconfigs at build time.
+    Dir.glob("#{installer.sandbox.root}/Target Support Files/Pods-qubetics_app/*.xcconfig") do |xcconfig_path|
+      content = File.read(xcconfig_path)
+      unless content.include?('FOLLY_CFG_NO_COROUTINES')
+        content += "\nOTHER_CPLUSPLUSFLAGS = $(inherited) -DFOLLY_CFG_NO_COROUTINES=1\n"
+        File.write(xcconfig_path, content)
+      end
+    end
+  end
+end

@@ -1,0 +1,56 @@
+diff --git a/node_modules/react-native-ssl-pinning/android/build.gradle b/node_modules/react-native-ssl-pinning/android/build.gradle
+index d1d9c39..448f992 100644
+--- a/node_modules/react-native-ssl-pinning/android/build.gradle
++++ b/node_modules/react-native-ssl-pinning/android/build.gradle
+@@ -1,7 +1,7 @@
+ 
+ buildscript {
+     repositories {
+-        jcenter()
++        mavenCentral()
+     }
+ 
+     dependencies {
+@@ -12,7 +12,10 @@ buildscript {
+ apply plugin: 'com.android.library'
+ 
+ android {
+-    compileSdkVersion 30
++    // RN 0.87's react-android AAR requires consumers to compile against
++    // API 34+, and this library hardcoded 30. Follow the convention every
++    // other native module here uses and read the root project's value.
++    compileSdkVersion rootProject.hasProperty('compileSdkVersion') ? rootProject.compileSdkVersion : 34
+     buildToolsVersion "28.0.3"
+ 
+     defaultConfig {
+diff --git a/node_modules/react-native-ssl-pinning/ios/RNSslPinning/RNSslPinning.m b/node_modules/react-native-ssl-pinning/ios/RNSslPinning/RNSslPinning.m
+index 9531fd3..c737ba1 100644
+--- a/node_modules/react-native-ssl-pinning/ios/RNSslPinning/RNSslPinning.m
++++ b/node_modules/react-native-ssl-pinning/ios/RNSslPinning/RNSslPinning.m
+@@ -265,9 +265,24 @@ -(void) performMultipartRequest: (AFURLSessionManager*)manager obj:(NSDictionary
+     
+     // set policy (ssl pinning)
+     if(disableAllSecurity){
++        // PATCHED: upstream also set validatesDomainName = false and
++        // allowInvalidCertificates = true here, which made this option accept
++        // any certificate from any host -- no chain validation and no hostname
++        // check. The app sets disableAllSecurity on every request (see
++        // src/Utils/pinnedFetch.ts), so all API traffic was unauthenticated on
++        // iOS and trivially interceptable by anyone able to proxy the network.
++        //
++        // Android's equivalent branch (buildDefaultOHttpClient) builds a plain
++        // OkHttp client, which still performs standard TLS validation and only
++        // skips pinning. These two lines make iOS behave the same way:
++        // validated TLS, no certificate pinning.
++        //
++        // Pinning itself is still not enabled anywhere -- that needs per-host
++        // scoping, because only qubetics.cer and swftc.cer are bundled while
++        // pinnedFetch is also used for third-party hosts.
+         policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+-        policy.validatesDomainName = false;
+-        policy.allowInvalidCertificates = true;
++        policy.validatesDomainName = true;
++        policy.allowInvalidCertificates = false;
+     }
+     else if (pkPinning){
+         policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey withPinnedCertificates:certificates];

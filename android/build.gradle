@@ -1,0 +1,80 @@
+buildscript {
+    ext {
+        buildToolsVersion = "37.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 37
+        targetSdkVersion = 36
+        kotlinVersion = "2.2.0"
+        ndkVersion = "27.1.12297006"
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin:0.87.1")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("com.google.gms:google-services:4.4.1")
+    }
+}
+
+plugins {
+    id("com.facebook.react.rootproject")
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withInputStream { localProperties.load(it) }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://www.jitpack.io' }
+        maven {
+            url = uri("https://maven.pkg.github.com/trustwallet/wallet-core")
+            credentials {
+                username = localProperties.getProperty("githubPackages.username")
+                password = localProperties.getProperty("githubPackages.password")
+            }
+        }
+    }
+    configurations.all {
+        resolutionStrategy {
+            force "androidx.core:core:1.15.0"
+            force "androidx.core:core-ktx:1.15.0"
+            force "com.facebook.soloader:soloader:0.12.1"
+            force "com.facebook.fbjni:fbjni:0.7.0"
+        }
+    }
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            jvmTarget = "17"
+            freeCompilerArgs += [
+                "-opt-in=com.facebook.react.common.annotations.FrameworkAPI"
+            ]
+        }
+    }
+}
+
+// AGP 9 removed android.defaults.buildfeatures.buildconfig, which used to
+// generate BuildConfig for every module. Six dependencies reference
+// BuildConfig from their sources without declaring buildFeatures.buildConfig
+// themselves (jail-monkey, react-native-date-picker, react-native-device-info,
+// react-native-screenshot-prevent, react-native-ssl-pinning and
+// @react-native-community/netinfo), so restore the old default for library
+// modules here instead of carrying a patch-package patch per library.
+subprojects {
+    ["com.android.library", "com.android.application"].each { pluginId ->
+        plugins.withId(pluginId) {
+            android {
+                buildFeatures {
+                    buildConfig true
+                }
+            }
+        }
+    }
+}

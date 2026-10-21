@@ -1,0 +1,37 @@
+
+syntax = "proto3";
+package qubetics.subscription.v3;
+
+message MsgStartSubscriptionRequest {
+  string from = 1;
+  uint64 id = 2;
+  string denom = 3;
+  uint64 renewal_price_policy = 4;
+}
+
+message MsgStartSessionRequest {
+  string from = 1;
+  uint64 id = 2;
+  string node_address = 3;
+}
+
+message MsgCancelSessionRequest {
+  string from = 1;
+  uint64 id = 2;
+}
+
+message MsgStartSubscriptionResponse {
+  uint64 id = 1;
+}
+
+message MsgStartSessionResponse {
+  uint64 id = 1;
+}
+message MsgCancelSessionResponse {}
+
+service MsgService {
+  rpc MsgStartSubscription(MsgStartSubscriptionRequest) returns (MsgStartSubscriptionResponse);
+    rpc MsgStartSession(MsgStartSessionRequest) returns (MsgStartSessionResponse);
+  rpc MsgCancelSession(MsgCancelSessionRequest) returns (MsgCancelSessionResponse);
+
+}

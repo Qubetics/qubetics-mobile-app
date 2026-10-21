@@ -1,0 +1,224 @@
+import Clipboard from '@react-native-clipboard/clipboard';
+import { useRef, useState } from 'react';
+import { Image, ImageBackground, Platform, TouchableOpacity, View } from 'react-native';
+import Toast from 'react-native-easy-toast';
+import { Actions } from '../../../navigation/RootNavigation';
+import { useDispatch } from 'react-redux';
+import { LanguageManager } from '../../../../LanguageManager';
+import { ThemeManager } from '../../../../ThemeManager';
+import * as Constants from '../../../Constants';
+import { requestWalletLogin } from '../../../Redux/Actions';
+import { Images } from '../../../theme';
+import { getDimensionPercentage as dimen, heightDimen } from '../../../Utils';
+import {
+  consoleLogFunc,
+  requestWalletApiData,
+} from '../../../Utils/MethodsUtils';
+import { importWallet, signCosmosMessage } from '../../../Utils/MnemonicsUtils';
+import {
+  AppAlert,
+  Button,
+  HeaderMain,
+  Input,
+  LoaderView,
+  OnboardingHeadings,
+} from '../../common';
+import styles from './ImportWalletStyles';
+import { loginWithCosmosWallet } from '../../Api/VPN/api/authWithCosmosWallet';
+import { disconnectVpn, stopVPN } from '../../common/WireGuardNative';
+
+const ImportWallet = (props: any) => {
+  const dispatch = useDispatch();
+  const toast = useRef<any>(null);
+  const [wallet_name, setWallet_name] = useState('');
+  const [, setIsKeyboard] = useState(false);
+  const [mnemonics, setMnemonics] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [alertModal, setAlertModal] = useState(false);
+  const [alertText, setAlertText] = useState('');
+
+  const importAction = () => {
+
+    if (wallet_name?.trim().length == 0) {
+      setAlertModal(true);
+      setAlertText(LanguageManager.alertMessages.enterWalletName);
+      return;
+    }
+    if (wallet_name?.length < 3) {
+      setAlertModal(true);
+      setAlertText(LanguageManager.createWalletTexts.validName);
+      return;
+    }
+    if (mnemonics?.length <= 0) {
+      setAlertModal(true);
+      setAlertText('Please enter mnemonics');
+      return;
+    }
+    setLoading(true);
+    (importWallet as any)(mnemonics?.toLowerCase()?.trim())
+      .then(async (response: any) => {
+        let WalletData = response;
+
+        const message = WalletData?.cosmos_address
+        consoleLogFunc('message>>>>', message);
+        const { pubKey, signature } = await signCosmosMessage(
+          mnemonics?.toLowerCase()?.trim(),
+          WalletData?.cosmos_address,
+          message,
+        );
+
+        Platform.OS === 'android' ? await disconnectVpn() : await stopVPN()
+        try {
+          await loginWithCosmosWallet({
+            wallet_address: WalletData?.cosmos_address,
+            pubKey: pubKey,
+            signatureBase64: signature,
+          });
+        } catch (err: any) {
+          console.error('Login error:', err);
+          setLoading(false);
+          setAlertModal(true)
+          setAlertText(err);
+          return;
+        }
+
+        const data = await requestWalletApiData({
+          walletData: WalletData,
+          walletName: wallet_name,
+        });
+
+        consoleLogFunc('data:::::::>>>>>', data);
+        importWalletApiCall(WalletData, data);
+      })
+      .catch((error: any) => {
+        setLoading(false);
+        consoleLogFunc('importWallet error---- ', error);
+        setAlertModal(true);
+        setAlertText(error);
+      });
+  };
+
+  const importWalletApiCall = async (WalletData: any, data: any) => {
+    (dispatch as any)(requestWalletLogin({ data }))
+      .then((resp: any) => {
+        (Actions as any).currentScene != 'CreatePin' &&
+          (Actions as any).CreatePin({
+            title: 'Create',
+            subtitle: 'create',
+            walletData: WalletData,
+            walletName: wallet_name,
+            walletApiRes: resp,
+            screenName: 'importWallet',
+          });
+        setLoading(false);
+      })
+      .catch((err: any) => {
+        setLoading(false);
+        toast.current?.show(err);
+        consoleLogFunc('error requestWalletLogin:::::', err);
+      });
+  };
+
+  const pasteAction = async () => {
+    const text = await Clipboard.getString();
+    setMnemonics(text);
+  };
+  return (
+    <ImageBackground
+      source={ThemeManager.ImageIcons.mainBgImgNew}
+      style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
+      <HeaderMain />
+      <View style={[styles.mainView]}>
+        <OnboardingHeadings
+          title={LanguageManager.importWallet.importWallet}
+          subTitle={LanguageManager.importWallet.importWalletH1}
+        />
+
+        <View style={[styles.subView]}>
+          <Input
+            inputStyle={{
+              borderRadius: dimen(14),
+              color: ThemeManager.colors.blackWhiteText,
+            }}
+            label={LanguageManager.walletName.enterWalletName}
+            value={wallet_name}
+            onChangeText={(val: any) => {
+              if (Constants.ALPHANUMERIC_WITH_SPACE_REGEX.test(val)) {
+                setWallet_name(val?.trimStart());
+              }
+            }}
+            placeholder={LanguageManager.walletName.enterHere}
+            maxLength={20}
+            onBlur={() => setIsKeyboard(false)}
+            onFocus={() => setIsKeyboard(true)}
+            labelcustom={{
+              marginTop: heightDimen(10),
+              color: ThemeManager.colors.blackWhiteText,
+            }}
+          />
+          <View>
+            <Input
+              inputStyle={[
+                styles.placeHolderStyle,
+                {
+                  color: ThemeManager.colors.blackWhiteText,
+                },
+              ]}
+              placeholder={LanguageManager.importWallet.secret}
+              multiline
+              returnKeyType="next"
+              icon={false}
+              maxLength={256}
+              value={mnemonics}
+              onChangeText={(val: any) => {
+                setMnemonics(val);
+                consoleLogFunc('val nmemonics>>>>', val);
+              }}
+              numberOfLines={3}
+              style={styles.inputPhraseStyle}
+              onBlur={() => setIsKeyboard(false)}
+              onFocus={() => setIsKeyboard(true)}
+            />
+
+            <TouchableOpacity
+              onPress={() => {
+                pasteAction();
+              }}
+              style={{ position: 'absolute', bottom: 12, right: 15 }}>
+              <Image
+                style={{ tintColor: ThemeManager.colors.primaryColor }}
+                source={Images.pasteIcon}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.btnContainer}>
+            <Button
+              buttontext={LanguageManager.pins.Continue}
+              onPress={() => {
+                importAction();
+              }}
+            />
+          </View>
+        </View>
+
+        <AppAlert
+          visible={alertModal}
+          alertTxt={alertText}
+          hideAlertDialog={() => {
+            setAlertModal(false);
+          }}
+        />
+
+        <Toast
+          ref={toast}
+          position="bottom"
+          positionValue={250}
+          {...({ style: { backgroundColor: ThemeManager.colors.toastBg } } as any)}
+        />
+      </View>
+      <LoaderView isLoading={loading} />
+    </ImageBackground>
+  );
+};
+
+export default ImportWallet;

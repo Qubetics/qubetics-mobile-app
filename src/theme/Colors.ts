@@ -1,0 +1,21 @@
+const colors = {
+  newHeader: '#1A202E',
+  newSafe: '#0C0C0D',
+  newBg: '#1C1C1E',
+  White: '#ffffff',
+  themeColor: '#738deb',
+  textColor: '#5F5E5E',
+  logoutColor: '#FF4B4B',
+  tabsWrapBg: 'rgba(208,25,97,0.10)',
+  placeholderColor: 'rgba(208,25,97,0.7)',
+  defiListbg: 'rgba(208,25,97,0.07)',
+  successColor: '#22AB48',
+  buttonBgColor: '#6E84E3',
+  borderShadowColor: '#00000014',
+  lossColor: '#FF060A',
+  profitColor: '#00BE00',
+  primaryColor: 'rgb( 57,185,186)',
+  grayIcon: "#818686",
+  placeHolderText: "#818686",
+};
+export default colors;

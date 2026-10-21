@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native-biometrics/android/build.gradle b/node_modules/react-native-biometrics/android/build.gradle
+index 7e6d6ac..a09de6c 100644
+--- a/node_modules/react-native-biometrics/android/build.gradle
++++ b/node_modules/react-native-biometrics/android/build.gradle
+@@ -25,6 +25,7 @@ def safeExtGet(prop, fallback) {
+ }
+ 
+ android {
++    namespace "com.rnbiometrics"
+     compileSdkVersion safeExtGet('compileSdkVersion', 29)
+ 
+     defaultConfig {

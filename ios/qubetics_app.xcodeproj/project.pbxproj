@@ -1,0 +1,1418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* qubetics_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* qubetics_appTests.m */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		20E4AA9AA741867FE20A1093 /* Pods_qubetics_app_qubetics_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BFAB5CD14AC67F2ECC70A6 /* Pods_qubetics_app_qubetics_appTests.framework */; };
+		2CD2E4256DC79C03D76F389B /* Pods_qubetics_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCD490343F3C3819C980936 /* Pods_qubetics_app.framework */; };
+		463B373A2559EC84E627652D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 73E5F205546068006A7BDC23 /* PrivacyInfo.xcprivacy */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		CE7027872EC217D30005B4C7 /* NETunnelProviderProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027842EC217D30005B4C7 /* NETunnelProviderProtocol+Extension.swift */; };
+		CE7027882EC217D30005B4C7 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027812EC217D30005B4C7 /* Bundle+Ext.swift */; };
+		CE7027892EC217D30005B4C7 /* ConfigurationParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027822EC217D30005B4C7 /* ConfigurationParseError.swift */; };
+		CE70278A2EC217D30005B4C7 /* String+ArrayConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027852EC217D30005B4C7 /* String+ArrayConversion.swift */; };
+		CE70278B2EC217D30005B4C7 /* TunnelConfiguration+WireGuardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027862EC217D30005B4C7 /* TunnelConfiguration+WireGuardConfig.swift */; };
+		CE70278C2EC217D30005B4C7 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027832EC217D30005B4C7 /* Keychain.swift */; };
+		CE7027912EC2188C0005B4C7 /* WireGuardVPNModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7027902EC2188C0005B4C7 /* WireGuardVPNModuleBridge.m */; };
+		CE7027922EC2188C0005B4C7 /* WireguardTunnelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE70278D2EC2188C0005B4C7 /* WireguardTunnelManager.swift */; };
+		CE7027932EC2188C0005B4C7 /* WireGuardVPNModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE70278E2EC2188C0005B4C7 /* WireGuardVPNModule.swift */; };
+		CE7027C12EC30B2A0005B4C7 /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE7027C02EC30B2A0005B4C7 /* WireGuardKit */; };
+		CE7027C32EC30BF70005B4C7 /* WalletCore in Frameworks */ = {isa = PBXBuildFile; productRef = CE7027C22EC30BF70005B4C7 /* WalletCore */; };
+		CE7027C52EC30C030005B4C7 /* WalletCoreSwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = CE7027C42EC30C030005B4C7 /* WalletCoreSwiftProtobuf */; };
+		CE91ABC72E39FEC30058E87A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABC62E39FEC30058E87A /* GoogleService-Info.plist */; };
+		CE91ABC92E39FECF0058E87A /* CreateWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABC82E39FECF0058E87A /* CreateWallet.swift */; };
+		CE91ABCD2E39FEE90058E87A /* CreateWalletBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABCC2E39FEE90058E87A /* CreateWalletBridge.m */; };
+		CE91ABDF2E39FEF50058E87A /* DataConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD42E39FEF50058E87A /* DataConvertable.swift */; };
+		CE91ABE02E39FEF50058E87A /* RIPEMD160.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABDA2E39FEF50058E87A /* RIPEMD160.swift */; };
+		CE91ABE12E39FEF50058E87A /* Base58Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD12E39FEF50058E87A /* Base58Encode.swift */; };
+		CE91ABE22E39FEF50058E87A /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABCF2E39FEF50058E87A /* SMP.swift */; };
+		CE91ABE32E39FEF50058E87A /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD32E39FEF50058E87A /* Crypto.swift */; };
+		CE91ABE42E39FEF50058E87A /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD92E39FEF50058E87A /* PublicKey.swift */; };
+		CE91ABE52E39FEF50058E87A /* WalletBTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABDC2E39FEF50058E87A /* WalletBTC.swift */; };
+		CE91ABE62E39FEF50058E87A /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD62E39FEF50058E87A /* Mnemonic.swift */; };
+		CE91ABE72E39FEF50058E87A /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABDD2E39FEF50058E87A /* WordList.swift */; };
+		CE91ABE82E39FEF50058E87A /* SegwitAddrCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABDB2E39FEF50058E87A /* SegwitAddrCoder.swift */; };
+		CE91ABE92E39FEF50058E87A /* BigInt+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABCE2E39FEF50058E87A /* BigInt+Extension.swift */; };
+		CE91ABEA2E39FEF50058E87A /* Bech32.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD22E39FEF50058E87A /* Bech32.swift */; };
+		CE91ABEB2E39FEF50058E87A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD72E39FEF50058E87A /* Network.swift */; };
+		CE91ABEC2E39FEF50058E87A /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD82E39FEF50058E87A /* PrivateKey.swift */; };
+		CE91ABED2E39FEF50058E87A /* ECDSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD52E39FEF50058E87A /* ECDSA.swift */; };
+		CE91ABEF2E39FEFE0058E87A /* HDWalletKitBTC.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABEE2E39FEFE0058E87A /* HDWalletKitBTC.podspec */; };
+		CE91ABF12E39FF050058E87A /* link-assets-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABF02E39FF050058E87A /* link-assets-manifest.json */; };
+		CE91ABFF2E39FF210058E87A /* DMSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABFB2E39FF210058E87A /* DMSans-SemiBold.ttf */; };
+		CE91AC002E39FF210058E87A /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABFA2E39FF210058E87A /* DMSans-Regular.ttf */; };
+		CE91AC042E39FF210058E87A /* DMSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABF72E39FF210058E87A /* DMSans-Light.ttf */; };
+		CE91AC052E39FF210058E87A /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABF82E39FF210058E87A /* DMSans-Medium.ttf */; };
+		CE91AC062E39FF210058E87A /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABF22E39FF210058E87A /* DMSans-Bold.ttf */; };
+		CE91AC072E39FF210058E87A /* DMSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABF52E39FF210058E87A /* DMSans-ExtraLight.ttf */; };
+		CE91AC0A2E39FF2F0058E87A /* trust-min.js in Resources */ = {isa = PBXBuildFile; fileRef = CE91AC092E39FF2F0058E87A /* trust-min.js */; };
+		CE91AEA12E3A531C0058E87A /* ScreenshotDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AE9E2E3A531C0058E87A /* ScreenshotDelegate.m */; };
+		CE91AEA22E3A531C0058E87A /* swftc.cer in Resources */ = {isa = PBXBuildFile; fileRef = CE91AE9F2E3A531C0058E87A /* swftc.cer */; };
+		CE91AEA92E3A53380058E87A /* qubetics.cer in Resources */ = {isa = PBXBuildFile; fileRef = CE91AEA62E3A53380058E87A /* qubetics.cer */; };
+		CE9F583F2EC3604000F3DD58 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7027BE2EC30A6B0005B4C7 /* NetworkExtension.framework */; };
+		CE9F58472EC3604000F3DD58 /* WireGuardTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CE9F583E2EC3604000F3DD58 /* WireGuardTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CE9F584E2EC3609D00F3DD58 /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE9F584D2EC3609D00F3DD58 /* WireGuardKit */; };
+		CE9F58502EC360A300F3DD58 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = CE9F584F2EC360A300F3DD58 /* KeychainAccess */; };
+		CE9F58512EC360A900F3DD58 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7027BC2EC30A5C0005B4C7 /* SystemConfiguration.framework */; };
+		CE9F58522EC360C700F3DD58 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027812EC217D30005B4C7 /* Bundle+Ext.swift */; };
+		CE9F58532EC360CD00F3DD58 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027832EC217D30005B4C7 /* Keychain.swift */; };
+		CE9F58542EC360CD00F3DD58 /* NETunnelProviderProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027842EC217D30005B4C7 /* NETunnelProviderProtocol+Extension.swift */; };
+		CE9F58552EC360CD00F3DD58 /* ConfigurationParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027822EC217D30005B4C7 /* ConfigurationParseError.swift */; };
+		CE9F58562EC360CD00F3DD58 /* TunnelConfiguration+WireGuardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027862EC217D30005B4C7 /* TunnelConfiguration+WireGuardConfig.swift */; };
+		CE9F58572EC360CD00F3DD58 /* String+ArrayConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7027852EC217D30005B4C7 /* String+ArrayConversion.swift */; };
+		CEAA11122EC30AAA0005B4C7 /* wg_simulator_stubs.c in Sources */ = {isa = PBXBuildFile; fileRef = CEAA11112EC30AAA0005B4C7 /* wg_simulator_stubs.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = qubetics_app;
+		};
+		CE9F58452EC3604000F3DD58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE9F583D2EC3604000F3DD58;
+			remoteInfo = WireGuardTunnel;
+		};
+		CE9F58622EC3623900F3DD58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE37EDD42E44787500C5980B;
+			remoteInfo = WireGuardGoBridgeiOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE9F584C2EC3604000F3DD58 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CE9F58472EC3604000F3DD58 /* WireGuardTunnel.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00E356EE1AD99517003FC87E /* qubetics_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qubetics_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* qubetics_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qubetics_appTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* qubetics_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qubetics_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = qubetics_app/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = qubetics_app/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = qubetics_app/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = qubetics_app/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = qubetics_app/main.m; sourceTree = "<group>"; };
+		22BFAB5CD14AC67F2ECC70A6 /* Pods_qubetics_app_qubetics_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qubetics_app_qubetics_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73E5F205546068006A7BDC23 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = qubetics_app/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = qubetics_app/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81F400A3D2EED9CC0364421D /* Pods-qubetics_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qubetics_app.debug.xcconfig"; path = "Target Support Files/Pods-qubetics_app/Pods-qubetics_app.debug.xcconfig"; sourceTree = "<group>"; };
+		82231C65A1BAAFAA2268C74E /* Pods-qubetics_app-qubetics_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qubetics_app-qubetics_appTests.release.xcconfig"; path = "Target Support Files/Pods-qubetics_app-qubetics_appTests/Pods-qubetics_app-qubetics_appTests.release.xcconfig"; sourceTree = "<group>"; };
+		8FC7650D5F2F07751F7FA170 /* Pods-qubetics_app-qubetics_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qubetics_app-qubetics_appTests.debug.xcconfig"; path = "Target Support Files/Pods-qubetics_app-qubetics_appTests/Pods-qubetics_app-qubetics_appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		ABAF6E43D14806BCC7BD6A5A /* Pods-qubetics_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qubetics_app.release.xcconfig"; path = "Target Support Files/Pods-qubetics_app/Pods-qubetics_app.release.xcconfig"; sourceTree = "<group>"; };
+		CCCD490343F3C3819C980936 /* Pods_qubetics_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_qubetics_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7027812EC217D30005B4C7 /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
+		CE7027822EC217D30005B4C7 /* ConfigurationParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationParseError.swift; sourceTree = "<group>"; };
+		CE7027832EC217D30005B4C7 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		CE7027842EC217D30005B4C7 /* NETunnelProviderProtocol+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NETunnelProviderProtocol+Extension.swift"; sourceTree = "<group>"; };
+		CE7027852EC217D30005B4C7 /* String+ArrayConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ArrayConversion.swift"; sourceTree = "<group>"; };
+		CE7027862EC217D30005B4C7 /* TunnelConfiguration+WireGuardConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TunnelConfiguration+WireGuardConfig.swift"; sourceTree = "<group>"; };
+		CE70278D2EC2188C0005B4C7 /* WireguardTunnelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireguardTunnelManager.swift; sourceTree = "<group>"; };
+		CE70278E2EC2188C0005B4C7 /* WireGuardVPNModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireGuardVPNModule.swift; sourceTree = "<group>"; };
+		CE70278F2EC2188C0005B4C7 /* WireGuardVPNModuleBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WireGuardVPNModuleBridge.h; sourceTree = "<group>"; };
+		CE7027902EC2188C0005B4C7 /* WireGuardVPNModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WireGuardVPNModuleBridge.m; sourceTree = "<group>"; };
+		CE7027BC2EC30A5C0005B4C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CE7027BE2EC30A6B0005B4C7 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		CE7027C62EC312AD0005B4C7 /* qubetics_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = qubetics_app.entitlements; sourceTree = "<group>"; };
+		CE91ABC62E39FEC30058E87A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE91ABC82E39FECF0058E87A /* CreateWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWallet.swift; sourceTree = "<group>"; };
+		CE91ABCA2E39FED40058E87A /* qubetics_app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "qubetics_app-Bridging-Header.h"; sourceTree = "<group>"; };
+		CE91ABCB2E39FEDE0058E87A /* CreateWalletBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateWalletBridge.h; sourceTree = "<group>"; };
+		CE91ABCC2E39FEE90058E87A /* CreateWalletBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateWalletBridge.m; sourceTree = "<group>"; };
+		CE91ABCE2E39FEF50058E87A /* BigInt+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigInt+Extension.swift"; sourceTree = "<group>"; };
+		CE91ABCF2E39FEF50058E87A /* SMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMP.swift; sourceTree = "<group>"; };
+		CE91ABD12E39FEF50058E87A /* Base58Encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Encode.swift; sourceTree = "<group>"; };
+		CE91ABD22E39FEF50058E87A /* Bech32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bech32.swift; sourceTree = "<group>"; };
+		CE91ABD32E39FEF50058E87A /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+		CE91ABD42E39FEF50058E87A /* DataConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConvertable.swift; sourceTree = "<group>"; };
+		CE91ABD52E39FEF50058E87A /* ECDSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDSA.swift; sourceTree = "<group>"; };
+		CE91ABD62E39FEF50058E87A /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
+		CE91ABD72E39FEF50058E87A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		CE91ABD82E39FEF50058E87A /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
+		CE91ABD92E39FEF50058E87A /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		CE91ABDA2E39FEF50058E87A /* RIPEMD160.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RIPEMD160.swift; sourceTree = "<group>"; };
+		CE91ABDB2E39FEF50058E87A /* SegwitAddrCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegwitAddrCoder.swift; sourceTree = "<group>"; };
+		CE91ABDC2E39FEF50058E87A /* WalletBTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBTC.swift; sourceTree = "<group>"; };
+		CE91ABDD2E39FEF50058E87A /* WordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
+		CE91ABEE2E39FEFE0058E87A /* HDWalletKitBTC.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = HDWalletKitBTC.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CE91ABF02E39FF050058E87A /* link-assets-manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "link-assets-manifest.json"; sourceTree = "<group>"; };
+		CE91ABF22E39FF210058E87A /* DMSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Bold.ttf"; sourceTree = "<group>"; };
+		CE91ABF52E39FF210058E87A /* DMSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		CE91ABF72E39FF210058E87A /* DMSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Light.ttf"; sourceTree = "<group>"; };
+		CE91ABF82E39FF210058E87A /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
+		CE91ABFA2E39FF210058E87A /* DMSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Regular.ttf"; sourceTree = "<group>"; };
+		CE91ABFB2E39FF210058E87A /* DMSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		CE91AC092E39FF2F0058E87A /* trust-min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "trust-min.js"; sourceTree = "<group>"; };
+		CE91AE9D2E3A531C0058E87A /* ScreenshotDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenshotDelegate.h; sourceTree = "<group>"; };
+		CE91AE9E2E3A531C0058E87A /* ScreenshotDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenshotDelegate.m; sourceTree = "<group>"; };
+		CE91AE9F2E3A531C0058E87A /* swftc.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = swftc.cer; sourceTree = "<group>"; };
+		CE91AEA62E3A53380058E87A /* qubetics.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = qubetics.cer; sourceTree = "<group>"; };
+		CE9F583E2EC3604000F3DD58 /* WireGuardTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WireGuardTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAA11112EC30AAA0005B4C7 /* wg_simulator_stubs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wg_simulator_stubs.c; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CE9F58482EC3604000F3DD58 /* Exceptions for "WireGuardTunnel" folder in "WireGuardTunnel" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CE9F583D2EC3604000F3DD58 /* WireGuardTunnel */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CE9F58402EC3604000F3DD58 /* WireGuardTunnel */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CE9F58482EC3604000F3DD58 /* Exceptions for "WireGuardTunnel" folder in "WireGuardTunnel" target */,
+			);
+			path = WireGuardTunnel;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20E4AA9AA741867FE20A1093 /* Pods_qubetics_app_qubetics_appTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7027C32EC30BF70005B4C7 /* WalletCore in Frameworks */,
+				CE7027C12EC30B2A0005B4C7 /* WireGuardKit in Frameworks */,
+				CE7027C52EC30C030005B4C7 /* WalletCoreSwiftProtobuf in Frameworks */,
+				2CD2E4256DC79C03D76F389B /* Pods_qubetics_app.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE9F583B2EC3604000F3DD58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9F584E2EC3609D00F3DD58 /* WireGuardKit in Frameworks */,
+				CE9F583F2EC3604000F3DD58 /* NetworkExtension.framework in Frameworks */,
+				CE9F58512EC360A900F3DD58 /* SystemConfiguration.framework in Frameworks */,
+				CE9F58502EC360A300F3DD58 /* KeychainAccess in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* qubetics_appTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* qubetics_appTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = qubetics_appTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* qubetics_app */ = {
+			isa = PBXGroup;
+			children = (
+				CE7027C62EC312AD0005B4C7 /* qubetics_app.entitlements */,
+				CE70278D2EC2188C0005B4C7 /* WireguardTunnelManager.swift */,
+				CE70278E2EC2188C0005B4C7 /* WireGuardVPNModule.swift */,
+				CE70278F2EC2188C0005B4C7 /* WireGuardVPNModuleBridge.h */,
+				CE7027902EC2188C0005B4C7 /* WireGuardVPNModuleBridge.m */,
+				CEAA11112EC30AAA0005B4C7 /* wg_simulator_stubs.c */,
+				CE37EDE92E44935900C5980B /* WireGuard */,
+				CE91AEA62E3A53380058E87A /* qubetics.cer */,
+				CE91AE9D2E3A531C0058E87A /* ScreenshotDelegate.h */,
+				CE91AE9E2E3A531C0058E87A /* ScreenshotDelegate.m */,
+				CE91AE9F2E3A531C0058E87A /* swftc.cer */,
+				CE91AC092E39FF2F0058E87A /* trust-min.js */,
+				CE91ABFD2E39FF210058E87A /* Resources */,
+				CE91ABF02E39FF050058E87A /* link-assets-manifest.json */,
+				CE91ABEE2E39FEFE0058E87A /* HDWalletKitBTC.podspec */,
+				CE91ABDE2E39FEF50058E87A /* HDWalletKitBTC */,
+				CE91ABCC2E39FEE90058E87A /* CreateWalletBridge.m */,
+				CE91ABCB2E39FEDE0058E87A /* CreateWalletBridge.h */,
+				CE91ABC82E39FECF0058E87A /* CreateWallet.swift */,
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB71A68108700A75B9A /* main.m */,
+				CE91ABC62E39FEC30058E87A /* GoogleService-Info.plist */,
+				CE91ABCA2E39FED40058E87A /* qubetics_app-Bridging-Header.h */,
+				73E5F205546068006A7BDC23 /* PrivacyInfo.xcprivacy */,
+			);
+			name = qubetics_app;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE7027BE2EC30A6B0005B4C7 /* NetworkExtension.framework */,
+				CE7027BC2EC30A5C0005B4C7 /* SystemConfiguration.framework */,
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				CCCD490343F3C3819C980936 /* Pods_qubetics_app.framework */,
+				22BFAB5CD14AC67F2ECC70A6 /* Pods_qubetics_app_qubetics_appTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* qubetics_app */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* qubetics_appTests */,
+				CE9F58402EC3604000F3DD58 /* WireGuardTunnel */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BBD78D7AC51CEA395F1C20DB /* Pods */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* qubetics_app.app */,
+				00E356EE1AD99517003FC87E /* qubetics_appTests.xctest */,
+				CE9F583E2EC3604000F3DD58 /* WireGuardTunnel.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				81F400A3D2EED9CC0364421D /* Pods-qubetics_app.debug.xcconfig */,
+				ABAF6E43D14806BCC7BD6A5A /* Pods-qubetics_app.release.xcconfig */,
+				8FC7650D5F2F07751F7FA170 /* Pods-qubetics_app-qubetics_appTests.debug.xcconfig */,
+				82231C65A1BAAFAA2268C74E /* Pods-qubetics_app-qubetics_appTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE37EDE92E44935900C5980B /* WireGuard */ = {
+			isa = PBXGroup;
+			children = (
+				CE7027812EC217D30005B4C7 /* Bundle+Ext.swift */,
+				CE7027822EC217D30005B4C7 /* ConfigurationParseError.swift */,
+				CE7027832EC217D30005B4C7 /* Keychain.swift */,
+				CE7027842EC217D30005B4C7 /* NETunnelProviderProtocol+Extension.swift */,
+				CE7027852EC217D30005B4C7 /* String+ArrayConversion.swift */,
+				CE7027862EC217D30005B4C7 /* TunnelConfiguration+WireGuardConfig.swift */,
+			);
+			path = WireGuard;
+			sourceTree = "<group>";
+		};
+		CE91ABD02E39FEF50058E87A /* BigInt */ = {
+			isa = PBXGroup;
+			children = (
+				CE91ABCE2E39FEF50058E87A /* BigInt+Extension.swift */,
+				CE91ABCF2E39FEF50058E87A /* SMP.swift */,
+			);
+			path = BigInt;
+			sourceTree = "<group>";
+		};
+		CE91ABDE2E39FEF50058E87A /* HDWalletKitBTC */ = {
+			isa = PBXGroup;
+			children = (
+				CE91ABD02E39FEF50058E87A /* BigInt */,
+				CE91ABD12E39FEF50058E87A /* Base58Encode.swift */,
+				CE91ABD22E39FEF50058E87A /* Bech32.swift */,
+				CE91ABD32E39FEF50058E87A /* Crypto.swift */,
+				CE91ABD42E39FEF50058E87A /* DataConvertable.swift */,
+				CE91ABD52E39FEF50058E87A /* ECDSA.swift */,
+				CE91ABD62E39FEF50058E87A /* Mnemonic.swift */,
+				CE91ABD72E39FEF50058E87A /* Network.swift */,
+				CE91ABD82E39FEF50058E87A /* PrivateKey.swift */,
+				CE91ABD92E39FEF50058E87A /* PublicKey.swift */,
+				CE91ABDA2E39FEF50058E87A /* RIPEMD160.swift */,
+				CE91ABDB2E39FEF50058E87A /* SegwitAddrCoder.swift */,
+				CE91ABDC2E39FEF50058E87A /* WalletBTC.swift */,
+				CE91ABDD2E39FEF50058E87A /* WordList.swift */,
+			);
+			path = HDWalletKitBTC;
+			sourceTree = "<group>";
+		};
+		CE91ABFD2E39FF210058E87A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE91ABF22E39FF210058E87A /* DMSans-Bold.ttf */,
+				CE91ABF52E39FF210058E87A /* DMSans-ExtraLight.ttf */,
+				CE91ABF72E39FF210058E87A /* DMSans-Light.ttf */,
+				CE91ABF82E39FF210058E87A /* DMSans-Medium.ttf */,
+				CE91ABFA2E39FF210058E87A /* DMSans-Regular.ttf */,
+				CE91ABFB2E39FF210058E87A /* DMSans-SemiBold.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		CE37EDD42E44787500C5980B /* WireGuardGoBridgeiOS */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = CE37EDD52E44787500C5980B /* Build configuration list for PBXLegacyTarget "WireGuardGoBridgeiOS" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "$(SRCROOT)/../SourcePackages/checkouts/wireguard-apple/Sources/WireGuardKitGo";
+			dependencies = (
+			);
+			name = WireGuardGoBridgeiOS;
+			passBuildSettingsInEnvironment = 1;
+			productName = WireGuardGoBridgeiOS;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* qubetics_appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "qubetics_appTests" */;
+			buildPhases = (
+				50C77E83BDC9C04CF7D4DB10 /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				6B8157046768B9DEEBD3B4FD /* [CP] Embed Pods Frameworks */,
+				94FDDD10DBA097DE389AC994 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = qubetics_appTests;
+			productName = qubetics_appTests;
+			productReference = 00E356EE1AD99517003FC87E /* qubetics_appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* qubetics_app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "qubetics_app" */;
+			buildPhases = (
+				96862B0DBCBCD126FB061EBF /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				CE9F584C2EC3604000F3DD58 /* Embed Foundation Extensions */,
+				CF2E8DCE502F0058F9F066B0 /* [CP] Embed Pods Frameworks */,
+				815260F57A20BC1442CDA5EE /* [CP] Copy Pods Resources */,
+				50C3C98343293CB01098541B /* [CP-User] [RNFB] Core Configuration */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE9F58462EC3604000F3DD58 /* PBXTargetDependency */,
+			);
+			name = qubetics_app;
+			productName = qubetics_app;
+			productReference = 13B07F961A680F5B00A75B9A /* qubetics_app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE9F583D2EC3604000F3DD58 /* WireGuardTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE9F58492EC3604000F3DD58 /* Build configuration list for PBXNativeTarget "WireGuardTunnel" */;
+			buildPhases = (
+				CE9F583A2EC3604000F3DD58 /* Sources */,
+				CE9F583B2EC3604000F3DD58 /* Frameworks */,
+				CE9F583C2EC3604000F3DD58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE9F58632EC3623900F3DD58 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CE9F58402EC3604000F3DD58 /* WireGuardTunnel */,
+			);
+			name = WireGuardTunnel;
+			packageProductDependencies = (
+				CE9F584D2EC3609D00F3DD58 /* WireGuardKit */,
+				CE9F584F2EC360A300F3DD58 /* KeychainAccess */,
+			);
+			productName = WireGuardTunnel;
+			productReference = CE9F583E2EC3604000F3DD58 /* WireGuardTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1620;
+					};
+					CE37EDD42E44787500C5980B = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					CE9F583D2EC3604000F3DD58 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "qubetics_app" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			packageReferences = (
+				CE37EDA92E4362DD00C5980B /* XCRemoteSwiftPackageReference "wallet-core" */,
+				CE37EDCE2E4476CC00C5980B /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				CE7027B02EC3083C0005B4C7 /* XCRemoteSwiftPackageReference "wireguard-apple" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* qubetics_app */,
+				00E356ED1AD99517003FC87E /* qubetics_appTests */,
+				CE9F583D2EC3604000F3DD58 /* WireGuardTunnel */,
+				CE37EDD42E44787500C5980B /* WireGuardGoBridgeiOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE91ABEF2E39FEFE0058E87A /* HDWalletKitBTC.podspec in Resources */,
+				CE91ABF12E39FF050058E87A /* link-assets-manifest.json in Resources */,
+				CE91ABFF2E39FF210058E87A /* DMSans-SemiBold.ttf in Resources */,
+				CE91AC002E39FF210058E87A /* DMSans-Regular.ttf in Resources */,
+				CE91AC042E39FF210058E87A /* DMSans-Light.ttf in Resources */,
+				CE91AC052E39FF210058E87A /* DMSans-Medium.ttf in Resources */,
+				CE91AEA22E3A531C0058E87A /* swftc.cer in Resources */,
+				CE91AC062E39FF210058E87A /* DMSans-Bold.ttf in Resources */,
+				CE91AC072E39FF210058E87A /* DMSans-ExtraLight.ttf in Resources */,
+				CE91AEA92E3A53380058E87A /* qubetics.cer in Resources */,
+				CE91AC0A2E39FF2F0058E87A /* trust-min.js in Resources */,
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				CE91ABC72E39FEC30058E87A /* GoogleService-Info.plist in Resources */,
+				463B373A2559EC84E627652D /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE9F583C2EC3604000F3DD58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		50C3C98343293CB01098541B /* [CP-User] [RNFB] Core Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "[CP-User] [RNFB] Core Configuration";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n\n##########################################################################\n##########################################################################\n#\n#  NOTE THAT IF YOU CHANGE THIS FILE YOU MUST RUN pod install AFTERWARDS\n#\n#  This file is installed as an Xcode build script in the project file\n#  by cocoapods, and you will not see your changes until you pod install\n#\n##########################################################################\n##########################################################################\n\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"note:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"note:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"note: -> RNFB build script started\"\necho \"note: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"note:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"note:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  if ! _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\"); then\n    echo \"error: Failed to parse firebase.json, check for syntax errors.\"\n    exit 1\n  fi\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"error: python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_analytics_storage\n  _ANALYTICS_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_analytics_storage\")\n  if [[ $_ANALYTICS_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_ANALYTICS_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_storage\n  _ANALYTICS_AD_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_storage\")\n  if [[ $_ANALYTICS_AD_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_user_data\n  _ANALYTICS_AD_USER_DATA=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_user_data\")\n  if [[ $_ANALYTICS_AD_USER_DATA ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_USER_DATA\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_USER_DATA\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"note: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"note: <- RNFB build script finished\"\n";
+		};
+		50C77E83BDC9C04CF7D4DB10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-qubetics_app-qubetics_appTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B8157046768B9DEEBD3B4FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qubetics_app-qubetics_appTests/Pods-qubetics_app-qubetics_appTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qubetics_app-qubetics_appTests/Pods-qubetics_app-qubetics_appTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qubetics_app-qubetics_appTests/Pods-qubetics_app-qubetics_appTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		815260F57A20BC1442CDA5EE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qubetics_app/Pods-qubetics_app-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qubetics_app/Pods-qubetics_app-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qubetics_app/Pods-qubetics_app-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94FDDD10DBA097DE389AC994 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qubetics_app-qubetics_appTests/Pods-qubetics_app-qubetics_appTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qubetics_app-qubetics_appTests/Pods-qubetics_app-qubetics_appTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qubetics_app-qubetics_appTests/Pods-qubetics_app-qubetics_appTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96862B0DBCBCD126FB061EBF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-qubetics_app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF2E8DCE502F0058F9F066B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qubetics_app/Pods-qubetics_app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-qubetics_app/Pods-qubetics_app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qubetics_app/Pods-qubetics_app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* qubetics_appTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE91ABDF2E39FEF50058E87A /* DataConvertable.swift in Sources */,
+				CE91ABE02E39FEF50058E87A /* RIPEMD160.swift in Sources */,
+				CE7027872EC217D30005B4C7 /* NETunnelProviderProtocol+Extension.swift in Sources */,
+				CE7027882EC217D30005B4C7 /* Bundle+Ext.swift in Sources */,
+				CE7027892EC217D30005B4C7 /* ConfigurationParseError.swift in Sources */,
+				CE70278A2EC217D30005B4C7 /* String+ArrayConversion.swift in Sources */,
+				CE70278B2EC217D30005B4C7 /* TunnelConfiguration+WireGuardConfig.swift in Sources */,
+				CE70278C2EC217D30005B4C7 /* Keychain.swift in Sources */,
+				CE91ABE12E39FEF50058E87A /* Base58Encode.swift in Sources */,
+				CE91ABE22E39FEF50058E87A /* SMP.swift in Sources */,
+				CE91ABE32E39FEF50058E87A /* Crypto.swift in Sources */,
+				CE91ABE42E39FEF50058E87A /* PublicKey.swift in Sources */,
+				CE91ABE52E39FEF50058E87A /* WalletBTC.swift in Sources */,
+				CE91ABE62E39FEF50058E87A /* Mnemonic.swift in Sources */,
+				CE91ABE72E39FEF50058E87A /* WordList.swift in Sources */,
+				CE91ABE82E39FEF50058E87A /* SegwitAddrCoder.swift in Sources */,
+				CE91ABE92E39FEF50058E87A /* BigInt+Extension.swift in Sources */,
+				CE91ABEA2E39FEF50058E87A /* Bech32.swift in Sources */,
+				CE91ABEB2E39FEF50058E87A /* Network.swift in Sources */,
+				CE91AEA12E3A531C0058E87A /* ScreenshotDelegate.m in Sources */,
+				CE91ABEC2E39FEF50058E87A /* PrivateKey.swift in Sources */,
+				CE7027912EC2188C0005B4C7 /* WireGuardVPNModuleBridge.m in Sources */,
+				CEAA11122EC30AAA0005B4C7 /* wg_simulator_stubs.c in Sources */,
+				CE7027922EC2188C0005B4C7 /* WireguardTunnelManager.swift in Sources */,
+				CE7027932EC2188C0005B4C7 /* WireGuardVPNModule.swift in Sources */,
+				CE91ABED2E39FEF50058E87A /* ECDSA.swift in Sources */,
+				CE91ABC92E39FECF0058E87A /* CreateWallet.swift in Sources */,
+				CE91ABCD2E39FEE90058E87A /* CreateWalletBridge.m in Sources */,
+				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE9F583A2EC3604000F3DD58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9F58532EC360CD00F3DD58 /* Keychain.swift in Sources */,
+				CE9F58542EC360CD00F3DD58 /* NETunnelProviderProtocol+Extension.swift in Sources */,
+				CE9F58552EC360CD00F3DD58 /* ConfigurationParseError.swift in Sources */,
+				CE9F58562EC360CD00F3DD58 /* TunnelConfiguration+WireGuardConfig.swift in Sources */,
+				CE9F58572EC360CD00F3DD58 /* String+ArrayConversion.swift in Sources */,
+				CE9F58522EC360C700F3DD58 /* Bundle+Ext.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* qubetics_app */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+		CE9F58462EC3604000F3DD58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE9F583D2EC3604000F3DD58 /* WireGuardTunnel */;
+			targetProxy = CE9F58452EC3604000F3DD58 /* PBXContainerItemProxy */;
+		};
+		CE9F58632EC3623900F3DD58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE37EDD42E44787500C5980B /* WireGuardGoBridgeiOS */;
+			targetProxy = CE9F58622EC3623900F3DD58 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FC7650D5F2F07751F7FA170 /* Pods-qubetics_app-qubetics_appTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = qubetics_appTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qubetics_app.app/qubetics_app";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82231C65A1BAAFAA2268C74E /* Pods-qubetics_app-qubetics_appTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = qubetics_appTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/qubetics_app.app/qubetics_app";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81F400A3D2EED9CC0364421D /* Pods-qubetics_app.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = qubetics_app/qubetics_app.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X494M4XTU3;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = qubetics_app/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Qubetics Wallet";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.2;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qubetics.wallet;
+				PRODUCT_NAME = qubetics_app;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "qubetics_app-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABAF6E43D14806BCC7BD6A5A /* Pods-qubetics_app.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = qubetics_app/qubetics_app.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X494M4XTU3;
+				INFOPLIST_FILE = qubetics_app/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Qubetics Wallet";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.2;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qubetics.wallet;
+				PRODUCT_NAME = qubetics_app;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "qubetics_app-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-runtimeexecutor/React_runtimeexecutor.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-runtimeexecutor/React_runtimeexecutor.framework/Headers/platform/ios",
+					"${PODS_ROOT}/ReactCommon",
+					"${PODS_ROOT}/ReactCommon/react/nativemodule/core",
+					"${PODS_ROOT}/React-runtimeexecutor",
+					"${PODS_ROOT}/React-runtimeexecutor/platform/ios",
+					"${PODS_ROOT}/ReactCommon-Samples",
+					"${PODS_ROOT}/ReactCommon-Samples/platform/ios",
+					"${PODS_ROOT}/React-Fabric/react/renderer/components/view/platform/cxx",
+					"${PODS_ROOT}/React-NativeModulesApple",
+					"${PODS_ROOT}/React-bridging",
+					"${PODS_ROOT}/React-graphics",
+					"${PODS_ROOT}/React-graphics/react/renderer/graphics/platform/ios",
+					"${PODS_ROOT}/React-featureflags",
+					"${PODS_ROOT}/React-renderercss",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DRCT_REMOVE_LEGACY_ARCH=1",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DRCT_REMOVE_LEGACY_ARCH=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				PODFILE_DIR = "$(SRCROOT)";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				USE_HERMES = true;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-runtimeexecutor/React_runtimeexecutor.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-runtimeexecutor/React_runtimeexecutor.framework/Headers/platform/ios",
+					"${PODS_ROOT}/ReactCommon",
+					"${PODS_ROOT}/ReactCommon/react/nativemodule/core",
+					"${PODS_ROOT}/React-runtimeexecutor",
+					"${PODS_ROOT}/React-runtimeexecutor/platform/ios",
+					"${PODS_ROOT}/ReactCommon-Samples",
+					"${PODS_ROOT}/ReactCommon-Samples/platform/ios",
+					"${PODS_ROOT}/React-Fabric/react/renderer/components/view/platform/cxx",
+					"${PODS_ROOT}/React-NativeModulesApple",
+					"${PODS_ROOT}/React-bridging",
+					"${PODS_ROOT}/React-graphics",
+					"${PODS_ROOT}/React-graphics/react/renderer/graphics/platform/ios",
+					"${PODS_ROOT}/React-featureflags",
+					"${PODS_ROOT}/React-renderercss",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DRCT_REMOVE_LEGACY_ARCH=1",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+					"-DRCT_REMOVE_LEGACY_ARCH=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				PODFILE_DIR = "$(SRCROOT)";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				USE_HERMES = true;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE37EDD62E44787500C5980B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = X494M4XTU3;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CE37EDD72E44787500C5980B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = X494M4XTU3;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		CE9F584A2EC3604000F3DD58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = WireGuardTunnel/WireGuardTunnel.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = X494M4XTU3;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WireGuardTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WireGuardTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qubetics.wallet.WireGuardTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CE9F584B2EC3604000F3DD58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = WireGuardTunnel/WireGuardTunnel.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = X494M4XTU3;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WireGuardTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WireGuardTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0.2;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qubetics.wallet.WireGuardTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "qubetics_appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "qubetics_app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "qubetics_app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE37EDD52E44787500C5980B /* Build configuration list for PBXLegacyTarget "WireGuardGoBridgeiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE37EDD62E44787500C5980B /* Debug */,
+				CE37EDD72E44787500C5980B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE9F58492EC3604000F3DD58 /* Build configuration list for PBXNativeTarget "WireGuardTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE9F584A2EC3604000F3DD58 /* Debug */,
+				CE9F584B2EC3604000F3DD58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE37EDA92E4362DD00C5980B /* XCRemoteSwiftPackageReference "wallet-core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/trustwallet/wallet-core";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		CE37EDCE2E4476CC00C5980B /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.2.2;
+			};
+		};
+		CE7027B02EC3083C0005B4C7 /* XCRemoteSwiftPackageReference "wireguard-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lika-vorobeva/wireguard-apple";
+			requirement = {
+				branch = "fix-package";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE7027C02EC30B2A0005B4C7 /* WireGuardKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE7027B02EC3083C0005B4C7 /* XCRemoteSwiftPackageReference "wireguard-apple" */;
+			productName = WireGuardKit;
+		};
+		CE7027C22EC30BF70005B4C7 /* WalletCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE37EDA92E4362DD00C5980B /* XCRemoteSwiftPackageReference "wallet-core" */;
+			productName = WalletCore;
+		};
+		CE7027C42EC30C030005B4C7 /* WalletCoreSwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE37EDA92E4362DD00C5980B /* XCRemoteSwiftPackageReference "wallet-core" */;
+			productName = WalletCoreSwiftProtobuf;
+		};
+		CE9F584D2EC3609D00F3DD58 /* WireGuardKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE7027B02EC3083C0005B4C7 /* XCRemoteSwiftPackageReference "wireguard-apple" */;
+			productName = WireGuardKit;
+		};
+		CE9F584F2EC360A300F3DD58 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE37EDCE2E4476CC00C5980B /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}
