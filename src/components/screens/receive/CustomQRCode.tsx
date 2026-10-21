@@ -1,33 +1,47 @@
-import { StyleSheet, View, Image, Dimensions } from "react-native";
-import QRCodeStyled from "react-native-qrcode-styled";
+import { StyleSheet, View, Image } from "react-native";
+import QRCodeStyled, { useQRCodeData, type GradientProps } from "react-native-qrcode-styled";
 import { Images } from "../../../theme";
-import { consoleLogFunc } from "../../../Utils/MethodsUtils";
+
+const QR_TOTAL_SIZE = 300;
+const EYE_SIZE_IN_PIECES = 7;
+// Visible ring of qrSideIcon_copy.png as a fraction of the whole image.
+const EYE_ARTWORK_RATIO = 0.82;
+const QR_OPTIONS = { errorCorrectionLevel: "H" } as const;
+
+const gradient: GradientProps = {
+  type: "radial",
+  options: {
+    center: [0.5, 0.5],
+    radius: [0.5, 0.5],
+    colors: ["#AA89D4", "#FFFFFF"],
+    locations: [0, 1],
+  },
+};
 
 function CustomQRCode({ address }: { address: string }) {
-  const screenHeight = Dimensions.get("window").height;
-  const screenWidth = Dimensions.get("window").width;
-  const pieceSize = Math.min(screenWidth, screenHeight) * 0.019;
-  consoleLogFunc("pieceSize>>>", pieceSize);
-  consoleLogFunc("address>>>", address?.length);
+  const isLongAddress = address?.length > 43;
+  const padding = isLongAddress ? 30 : 28;
+  // The rendered size is fixed (size + 2 * padding), so the QR and the eye
+  // overlays look identical on every screen density and width.
+  const size = QR_TOTAL_SIZE - 2 * padding;
+  const { qrCodeSize } = useQRCodeData(address, QR_OPTIONS);
+  const eyeSize = (size / qrCodeSize) * EYE_SIZE_IN_PIECES;
+  // The icon artwork has a soft glow margin, so the image is drawn larger than
+  // the 7-module eye and centred on it; the visible ring then covers the eye.
+  const eyeImageSize = eyeSize / EYE_ARTWORK_RATIO;
+  const eyeOffset = padding - (eyeImageSize - eyeSize) / 2;
+  const eyeStyle = { position: "absolute", width: eyeImageSize, height: eyeImageSize } as const;
 
   return (
-    <View>
+    <View style={styles.container}>
       <QRCodeStyled
-        height={300}
-        width={300}
+        size={size}
         data={address}
-        style={styles.svg}
         errorCorrectionLevel="H"
-        pieceScale={0.6}
-        padding={address?.length > 43 ? 30 : 28}
-        // react-native-qrcode-styled 0.4.0 declares its props as
-        // Omit<PieceOptions, 'pieceSize'>, but SVGQRCodeStyled does accept and
-        // use pieceSize (it derives svgSize from it). Dropping the prop to
-        // satisfy the types would fall back to DEFAULT_PIECE_SIZE and shrink
-        // the QR code. Remove this once upstream stops omitting it.
-        // @ts-expect-error -- library type omits a prop its implementation uses
-        pieceSize={address?.length > 43 ? pieceSize * 1.1 : pieceSize * 1.22}
+        pieceScale={0.9}
+        padding={padding}
         pieceBorderRadius={4}
+        style={styles.svg}
         gradient={{
           type: "radial",
           options: {
@@ -37,85 +51,39 @@ function CustomQRCode({ address }: { address: string }) {
             locations: [0, 1],
           },
         }}
-        outerEyesOptions={{
-          gradient: {
-            type: "radial",
-            options: {
-              center: [0.5, 0.5],
-              radius: [0.5, 0.5],
-              colors: ["#AA89D4", "#FFFFFF"],
-              locations: [0, 1],
-            },
-          },
-        }}
-        innerEyesOptions={{
-          gradient: {
-            type: "radial",
-            options: {
-              center: [0.5, 0.5],
-              radius: [0.5, 0.5],
-              colors: ["#AA89D4", "#FFFFFF"],
-              locations: [0, 1],
-            },
-          },
-        }}
+        outerEyesOptions={{ gradient }}
+        innerEyesOptions={{ gradient }}
         logo={{
           href: Images.welcomelogo,
           padding: 1,
-          scale: address?.length > 43 ? 1.05 : 1.2,
+          scale: isLongAddress ? 0.9 : 1,
         }}
       />
 
       <Image
         source={Images.qrSideIcon_copy}
-        style={[
-          {
-            minHeight:address?.length > 43 ?60: 65,
-            minWidth:address?.length > 43 ?60: 65,
-            position: "absolute",
-            top: 25,
-            left: 30,
-            height: 60,
-            width: 60,
-          },
-        ]}
+        resizeMode="contain"
+        style={[eyeStyle, { top: eyeOffset, left: eyeOffset }]}
       />
       <Image
         source={Images.qrSideIcon_copy}
-        style={[
-          {
-            minHeight: address?.length > 43 ?60:65,
-            minWidth: address?.length > 43 ?60:65,
-            position: "absolute",
-            top: 25,
-            right: 30,
-            zIndex: 1,
-            height: 60,
-            width: 60,
-          },
-        ]}
+        resizeMode="contain"
+        style={[eyeStyle, { top: eyeOffset, right: eyeOffset }]}
       />
       <Image
         source={Images.qrSideIcon_copy}
-        style={[
-          {
-            minHeight: address?.length > 43 ?60:65,
-            minWidth: address?.length > 43 ?60:65,
-            position: "absolute",
-            bottom: 25,
-            left: 30,
-            zIndex: 2,
-            height: 60,
-            width: 60,
-
-          },
-        ]}
+        resizeMode="contain"
+        style={[eyeStyle, { bottom: eyeOffset, left: eyeOffset }]}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    width: QR_TOTAL_SIZE,
+    height: QR_TOTAL_SIZE,
+  },
   svg: {
     borderRadius: 16,
     overflow: "hidden",

@@ -40,7 +40,7 @@ export const CustomTokenModal = (props: any) => {
           },
         ]}
       >
-        <HeaderMain
+        <HeaderMain inModal
           backCallBack={props.onPressIn}
           BackButtonText={"Network"}
         ></HeaderMain>

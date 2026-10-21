@@ -90,7 +90,7 @@ export const ModalCoinList = (props: any) => {
             }}
           >
             <View style={{ flex: 1 }}>
-              <HeaderMain
+              <HeaderMain inModal
                 backCallBack={props.handleBack}
                 BackButtonText={
                   props.title ? props.title : commonText.ChooseAsset
@@ -420,7 +420,7 @@ export const ModalCoinList = (props: any) => {
         ) : (
           <View style={[styles.centeredView, {
           }]}>
-            <HeaderMain
+            <HeaderMain inModal
               backCallBack={props.onPressIn}
               BackButtonText={"Network"}
             />

@@ -125,7 +125,7 @@ export const ChangellyCoinList = (props: any) => {
         }}
       >
         <View style={{ flex: 1 }}>
-          <HeaderMain
+          <HeaderMain inModal
             backCallBack={props.handleBack}
             BackButtonText={props.title ? props.title : commonText.ChooseAsset}
           />

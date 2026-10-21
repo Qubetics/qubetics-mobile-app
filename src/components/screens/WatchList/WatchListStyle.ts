@@ -4,7 +4,7 @@ import { getDimensionPercentage as dimen, heightDimen, widthDimen } from '../../
 
 export default StyleSheet.create({
   ViewStyle2: {
-    bottom: heightDimen(210),
+    bottom: heightDimen(170),
     position: 'absolute',
     alignSelf: 'center',
   },

@@ -36,7 +36,7 @@ export const ConfirmSwap = (props: any) => {
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew, }}
       >
-        <HeaderMain
+        <HeaderMain inModal
           mainStyle={{ marginTop: Platform.OS === 'ios' ? 40 : 30 }}
           backCallBack={props.handleBack}
           BackButtonText={merchantCard.confirm + " " + commonText.Swap}

@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import DeviceInfo from "react-native-device-info";
-import { statusBarOffset } from "../../Utils/StatusBarOffset";
+import { modalStatusBarOffset, statusBarOffset } from "../../Utils/StatusBarOffset";
 import { Actions } from '../../navigation/RootNavigation';
 import { LanguageManager } from "../../../LanguageManager";
 import { ThemeManager } from "../../../ThemeManager";
@@ -20,6 +20,7 @@ import {
 
 const HeaderMain = (props: any) => {
   const [istouchdis, setistouchdis] = useState(false);
+  const topOffset = props.inModal ? modalStatusBarOffset : statusBarOffset;
   return (
     <View
       style={[
@@ -30,7 +31,7 @@ const HeaderMain = (props: any) => {
               ? DeviceInfo.hasNotch() || DeviceInfo.hasDynamicIsland()
                 ? getDimensionPercentage(120)
                 : getDimensionPercentage(110)
-              : statusBarOffset + getDimensionPercentage(60),
+              : topOffset + getDimensionPercentage(60),
         },
         props?.customMainStyle,
       ]}

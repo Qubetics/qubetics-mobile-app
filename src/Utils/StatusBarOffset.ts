@@ -11,3 +11,7 @@ const getStatusBarOffset = () => {
 };
 
 export const statusBarOffset = getStatusBarOffset();
+
+// A translucent Modal is its own window and always draws behind the status bar, so it needs the
+// whole bar height regardless of where the main window starts.
+export const modalStatusBarOffset = Platform.OS === 'android' ? initialWindowMetrics?.insets.top ?? 0 : 0;

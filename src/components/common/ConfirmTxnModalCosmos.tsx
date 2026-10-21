@@ -37,7 +37,7 @@ export const ConfirmTxnModalCosmos = (props: any) => {
       >
       <View style={{ flex: 1,  }}>
         <View>
-          <HeaderMain
+          <HeaderMain inModal
             backCallBack={props.handleBack}
             BackButtonText={commonText.Send + ' ' + 'cosmos'}
           />

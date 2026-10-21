@@ -62,7 +62,7 @@ export const ConfirmSwapCrosschain = (props: any) => {
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
-        <HeaderMain
+        <HeaderMain inModal
           backCallBack={props.handleBack}
           BackButtonText={merchantCard.confirm + " " + commonText.Swap}
         />
