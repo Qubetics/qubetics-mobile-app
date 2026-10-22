@@ -1,5 +1,6 @@
 import { Component } from "react";
-import { ImageBackground, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { EventRegister } from "react-native-event-listeners";
 import { Actions } from '../../../navigation/RootNavigation';
 import { connect } from "react-redux";
@@ -175,7 +176,7 @@ class SelectCoin extends Component<any, any> {
   render() {
     const { walletMain } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -249,7 +250,7 @@ class SelectCoin extends Component<any, any> {
         />
         <LoaderView isLoading={this.state.isLoading} />
 
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

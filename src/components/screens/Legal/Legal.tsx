@@ -4,8 +4,8 @@ import {
   TouchableOpacity,
   Text,
   Image,
-  ImageBackground,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from './LegalStyles';
 import { ThemeManager } from '../../../../ThemeManager';
 import { LanguageManager } from '../../../../LanguageManager';
@@ -63,7 +63,7 @@ const Legal = (props: any) => {
   }, []);
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
       <HeaderMain />
@@ -166,7 +166,7 @@ const Legal = (props: any) => {
           setAlertModal(false);
         }}
       />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

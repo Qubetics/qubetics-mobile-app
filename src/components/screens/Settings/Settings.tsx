@@ -6,9 +6,9 @@ import {
   NativeModules,
   Platform,
   BackHandler,
-  ImageBackground,
   Image,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { useEffect, useRef, useState } from "react";
 import { ThemeManager } from "../../../../ThemeManager";
 import { Button, CardView, HeaderMain, LoaderView } from "../../common";
@@ -243,7 +243,6 @@ const Settings = (props: any) => {
       EventRegister.emit("turnOffDapp");
       ThemeManager.setLanguage("darkMode");
       EventRegister.emit("getThemeChanged", 1);
-      EventRegister.emit("theme", "#0C0C0D");
       LanguageManager.setLanguage("English");
       Singleton.getInstance().userRefCode = "";
       (global as any).isDeepLink = false;
@@ -297,7 +296,7 @@ const Settings = (props: any) => {
   };
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
     >
@@ -451,7 +450,7 @@ const Settings = (props: any) => {
         </CommonModal>}
         <LoaderView isLoading={loading} />
       </View>
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

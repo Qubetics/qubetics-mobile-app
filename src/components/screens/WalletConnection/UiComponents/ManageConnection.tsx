@@ -1,4 +1,5 @@
-import { View, Text, Modal, ImageBackground, ScrollView, Image, FlatList } from 'react-native'
+import { View, Text, Modal, ScrollView, Image, FlatList } from "react-native";
+import BackgroundImage from "../../../common/BackgroundImage";
 import { Button, HeaderMain, ManageItem } from '../../../common'
 import { LanguageManager } from '../../../../../LanguageManager'
 import { ThemeManager } from '../../../../../ThemeManager'
@@ -23,7 +24,7 @@ const ManageConnection = ({ isVisible, onClose, wcData, onDisconnect }: { isVisi
 
     return (
         <Modal transparent={true} visible={isVisible} onRequestClose={onClose}>
-            <ImageBackground
+            <BackgroundImage
                 source={ThemeManager.ImageIcons.mainBgImgNew}
                 style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
             >
@@ -82,7 +83,7 @@ const ManageConnection = ({ isVisible, onClose, wcData, onDisconnect }: { isVisi
                         onPress={onDisconnect}
                         buttontext={LanguageManager.walletConnection.disconnect} />
                 </View>
-            </ImageBackground>
+            </BackgroundImage>
         </Modal>
     )
 }

@@ -4,13 +4,13 @@ import {
   BackHandler,
   FlatList,
   Image,
-  ImageBackground,
   Keyboard,
   ScrollView,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { EventRegister } from "react-native-event-listeners";
 import { ActionConst, Actions } from '../../../navigation/RootNavigation';
@@ -97,13 +97,9 @@ class EnterPin extends Component<any, any> {
         this.setState({ themeSelected: theme });
       });
       EventRegister.emit("enableTouchable", true);
-      const color = ThemeManager.colors.Mainbg;
-      EventRegister.emit("theme", color);
     });
     this.blurListener = this.props.navigation.addListener('blur', () => {
-      const color = ThemeManager.colors.Mainbg;
       consoleLogFunc("chk blur enter pin:::::");
-      EventRegister.emit("theme", color);
       if (this.backhandle) this.backhandle?.remove();
     });
   }
@@ -369,11 +365,6 @@ class EnterPin extends Component<any, any> {
         }
       }
     }
-    const color =
-      this.state.themeSelected == 2
-        ? ThemeManager.colors.colorVariation
-        : ThemeManager.colors.MainbgNew;
-    EventRegister.emit("theme", color);
     if (
       (global as any).isRefLink == true &&
       Singleton.getInstance().userRefCode != myReferralCode
@@ -411,7 +402,7 @@ class EnterPin extends Component<any, any> {
         showsVerticalScrollIndicator={false}
         style={{ backgroundColor: ThemeManager.colors.mainBgNew }}
       >
-        <ImageBackground
+        <BackgroundImage
           source={ThemeManager.ImageIcons.mainBgImgNew}
           style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
         >
@@ -480,7 +471,7 @@ class EnterPin extends Component<any, any> {
               />
             </View>
           </View>
-        </ImageBackground>
+        </BackgroundImage>
 
         {/* -------------------------------------------------------- */}
         {this.state.showAlertDialogConfirm && (

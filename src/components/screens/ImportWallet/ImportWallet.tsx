@@ -1,6 +1,7 @@
 import Clipboard from '@react-native-clipboard/clipboard';
 import { useRef, useState } from 'react';
-import { Image, ImageBackground, Platform, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, TouchableOpacity, View } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import Toast from 'react-native-easy-toast';
 import { Actions } from '../../../navigation/RootNavigation';
 import { useDispatch } from 'react-redux';
@@ -124,7 +125,7 @@ const ImportWallet = (props: any) => {
     setMnemonics(text);
   };
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
       <HeaderMain />
@@ -217,7 +218,7 @@ const ImportWallet = (props: any) => {
         />
       </View>
       <LoaderView isLoading={loading} />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

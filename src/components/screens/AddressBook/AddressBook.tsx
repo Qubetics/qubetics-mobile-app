@@ -5,9 +5,9 @@ import {
   Text,
   TouchableOpacity,
   Animated,
-  ImageBackground,
   BackHandler,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {
   AppAlert,
   LoaderView,
@@ -297,7 +297,7 @@ class AddressBook extends Component<any, any> {
   render() {
     const { addressBook } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -425,7 +425,7 @@ class AddressBook extends Component<any, any> {
             }}
           />
         )}
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

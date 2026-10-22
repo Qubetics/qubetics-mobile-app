@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { BackHandler, ImageBackground } from 'react-native';
+import { BackHandler } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { ThemeManager } from '../../../../ThemeManager';
 import { HeaderMain } from '../../common';
 import Notifications from './Notifications';
@@ -92,7 +93,7 @@ const NotificationsTab = (props: any) => {
 
   /******************************************************************************************/
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
     >
@@ -115,7 +116,7 @@ const NotificationsTab = (props: any) => {
         <Notifications navigation={props.navigation} />
       </>}
 
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

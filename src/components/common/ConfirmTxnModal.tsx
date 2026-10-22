@@ -1,4 +1,5 @@
-import { Image, ImageBackground, Modal, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Image, Modal, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import BackgroundImage from "./BackgroundImage";
 import { LanguageManager } from '../../../LanguageManager';
 import { ThemeManager } from '../../../ThemeManager';
 import Singleton from '../../Singleton';
@@ -30,7 +31,7 @@ export const ConfirmTxnModal = (props: any) => {
       visible={props.showConfirmTxnModal}
       onRequestClose={props.handleBack}>
 
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -68,7 +69,7 @@ export const ConfirmTxnModal = (props: any) => {
 
           </View>
 
-          <ImageBackground source={ThemeManager.ImageIcons.homeSubBg} style={[styles.ViewStyle1,]}>
+          <BackgroundImage source={ThemeManager.ImageIcons.homeSubBg} style={[styles.ViewStyle1,]}>
             <View style={[styles.ViewStyle,]}>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.legalGreyColor }]}>{commonText.Asset}</Text>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.blackWhiteText,flex:0.8,textAlign:'right' }]}>{props.selectedCoin.coin_name}({props.selectedCoin.coin_symbol?.toUpperCase()})</Text>
@@ -81,8 +82,8 @@ export const ConfirmTxnModal = (props: any) => {
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.legalGreyColor }]}>{commonText.to}</Text>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.blackWhiteText }]}>{maskAddress(props.newObj.toAddress)}</Text>
             </View>
-          </ImageBackground>
-          <ImageBackground source={ThemeManager.ImageIcons.homeSubBg} style={[styles.ViewStyle1, { marginTop: heightDimen(11) }]}>
+          </BackgroundImage>
+          <BackgroundImage source={ThemeManager.ImageIcons.homeSubBg} style={[styles.ViewStyle1, { marginTop: heightDimen(11) }]}>
             <View style={[styles.ViewStyle, { borderBottomColor: ThemeManager.colors.underLineColor }]}>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.legalGreyColor }]}>{commonText.networkFee}</Text>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.blackWhiteText }]}>{toFixedExp(props.newObj.totalFee, 8)}{' '}{props.newObj.feeSymbol} ({(props.from == 'Card' || props.from == 'referral') ? props.currency : Singleton.getInstance().CurrencySymbol}{props.newObj.fiatCoin})</Text>
@@ -92,7 +93,7 @@ export const ConfirmTxnModal = (props: any) => {
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.legalGreyColor }]}>{commonText.MaxTotal}</Text>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.blackWhiteText }]}>{(props.from == 'Card' || props.from == 'referral') ? props.currency : Singleton.getInstance().CurrencySymbol}{' '}{toFixedExp(parseFloat(props.newObj.fiatAmount) + parseFloat(props.newObj.fiatCoin), 3)}</Text>
             </View>
-          </ImageBackground>
+          </BackgroundImage>
 
         </View>
 
@@ -103,7 +104,7 @@ export const ConfirmTxnModal = (props: any) => {
       </View>
 
       <SafeAreaView style={{ backgroundColor: ThemeManager.colors.mainBgNew }} />
-      </ImageBackground>
+      </BackgroundImage>
     </Modal>
   );
 };

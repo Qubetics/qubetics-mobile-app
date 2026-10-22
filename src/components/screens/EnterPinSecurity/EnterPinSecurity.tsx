@@ -4,11 +4,11 @@ import {
   BackHandler,
   FlatList,
   Image,
-  ImageBackground,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { EventRegister } from "react-native-event-listeners";
 import { Actions } from '../../../navigation/RootNavigation';
 import { LanguageManager } from "../../../../LanguageManager";
@@ -86,7 +86,6 @@ class EnterPinSecurity extends Component<any, any> {
 
   /******************************************************************************************/
   handleBackButtonClick() {
-    EventRegister.emit("theme", ThemeManager.colors.statusBarColor1);
     (Actions as any).pop();
     return true;
   }
@@ -225,7 +224,7 @@ class EnterPinSecurity extends Component<any, any> {
   render() {
     const { pins } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -290,7 +289,7 @@ class EnterPinSecurity extends Component<any, any> {
             this.setState({ showAlertDialog: false });
           }}
         />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

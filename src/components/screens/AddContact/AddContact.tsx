@@ -19,8 +19,8 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   Image,
-  ImageBackground,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from "./AddContactStyle";
 import {
   Button,
@@ -399,7 +399,7 @@ class AddContact extends Component<any, any> {
       );
 
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -632,7 +632,7 @@ class AddContact extends Component<any, any> {
           }}
         />
         <LoaderView isLoading={this.state.isLoading} />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

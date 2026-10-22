@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { View, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
+import { View, TouchableOpacity, Text, Image } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from './ManageOnboardingStyles'
 import { ThemeManager } from '../../../../ThemeManager';
 import { LanguageManager } from '../../../../LanguageManager';
@@ -31,7 +32,7 @@ const ManageOnboarding = (props: any) => {
 
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{
         flex: 1, backgroundColor: ThemeManager.colors.mainBgNew
@@ -81,7 +82,7 @@ const ManageOnboarding = (props: any) => {
 
         </View>
       </View>
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

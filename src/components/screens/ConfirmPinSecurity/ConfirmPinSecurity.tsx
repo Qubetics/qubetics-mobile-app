@@ -3,11 +3,11 @@ import { Component } from 'react';
 import {
   FlatList,
   Image,
-  ImageBackground,
   Text,
   TouchableOpacity,
-  View
-} from 'react-native';
+  View,
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { ThemeManager } from '../../../../ThemeManager';
 import { Colors } from '../../../theme';
 import { AppAlert, HeaderMain, OnboardingHeadings } from '../../common';
@@ -44,8 +44,6 @@ class ConfirmPinSecurity extends Component<any, any> {
     consoleLogFunc("🔐 CONFIRM PIN SECURITY ==>");
     this.focusListener = this.props.navigation.addListener('focus', () => {
       this.setState({ myPin: '', showButton: false });
-      const color = this.props.themeSelected == 2 ? Colors.White : Colors.newSafe
-      EventRegister.emit('theme', color);
     });
     EventRegister.addEventListener(Constants.DOWN_MODAL, () => {
       this.setState({
@@ -103,8 +101,6 @@ class ConfirmPinSecurity extends Component<any, any> {
   hideAlert() {
     this.setState({ showAlertDialog: false });
     if (this.state.showButton == true) {
-      const theme = this.props.themeSelected == 1 ? ThemeManager.colors.MainbgNew : Colors.newHeader
-      EventRegister.emit('theme', theme);
       this.setState({ myPin: '', secretTxt: [false, false, false, false, false, false] });
       if (this.state.alertTxt != LanguageManager.alertMessages.enteredPINDoesNotMatch) {
         Actions.pop();
@@ -177,7 +173,7 @@ class ConfirmPinSecurity extends Component<any, any> {
   render() {
     const { pins } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -228,7 +224,7 @@ class ConfirmPinSecurity extends Component<any, any> {
           alertTxt={this.state.alertTxt}
           hideAlertDialog={() => { this.hideAlert() }}
         />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

@@ -5,8 +5,8 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
-  ImageBackground,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { Colors } from "../../../theme";
 import { ThemeManager } from "../../../../ThemeManager";
 import {
@@ -246,7 +246,7 @@ class UpdateWatchList extends Component<any, any> {
   render() {
     const { walletMain } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
         source={ThemeManager.ImageIcons.mainBgImgNew}
       >
@@ -497,7 +497,7 @@ class UpdateWatchList extends Component<any, any> {
             this.onPressOk();
           }}
         />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

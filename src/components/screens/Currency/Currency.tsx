@@ -6,9 +6,9 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   View,
-  ImageBackground,
   BackHandler,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from "./CurrencyStyle";
 import { AppAlert, HeaderMain, LoaderView } from "../../common";
 import { Images } from "../../../theme/";
@@ -122,7 +122,7 @@ class Currency extends Component<any, any> {
   /******************************************************************************************/
   render() {
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -212,7 +212,7 @@ class Currency extends Component<any, any> {
           position="center"
           {...({ style: { backgroundColor: ThemeManager.colors.toastBg } } as any)}
         />
-      </ImageBackground >
+      </BackgroundImage >
     );
   }
 }

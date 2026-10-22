@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import {
   BackHandler,
-  ImageBackground,
   Text,
   View,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { EventRegister } from "react-native-event-listeners";
 import { connect } from "react-redux";
 import { LanguageManager } from "../../../../LanguageManager";
@@ -113,7 +113,7 @@ const VpnAccountDetails = (props: any) => {
   };
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
     >
@@ -180,7 +180,7 @@ const VpnAccountDetails = (props: any) => {
         // @ts-ignore BUG PRESERVED: Toast has no style prop (ignored at runtime)
         style={{ backgroundColor: ThemeManager.colors.toastBg }}
       />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

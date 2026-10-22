@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import {
   FlatList,
   Image,
-  ImageBackground,
   Modal,
   Pressable,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
+import BackgroundImage from "./BackgroundImage";
 import FastImage from "react-native-fast-image";
 import { LanguageManager } from "../../../LanguageManager";
 import { ThemeManager } from "../../../ThemeManager";
@@ -78,7 +78,7 @@ export const ModalCoinList = (props: any) => {
       visible={props.openModel}
       onRequestClose={props.handleBack || props.onPressIn}
     >
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -489,7 +489,7 @@ export const ModalCoinList = (props: any) => {
           </View>
         )}
         <LoaderView isLoading={loading} />
-      </ImageBackground>
+      </BackgroundImage>
     </Modal>
   );
 };

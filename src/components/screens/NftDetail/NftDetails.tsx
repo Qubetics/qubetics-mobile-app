@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { View, Text, ImageBackground, ScrollView, Image } from 'react-native';
+import { View, Text, ScrollView, Image } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { Button, HeaderMain } from '../../common';
 import { ThemeManager } from '../../../../ThemeManager';
 import { LanguageManager } from '../../../../LanguageManager';
@@ -22,7 +23,7 @@ class NftDetails extends Component<any, any> {
 
   render() {
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
         <HeaderMain
@@ -78,7 +79,7 @@ class NftDetails extends Component<any, any> {
             buttontext={LanguageManager.walletMain.send}
           />
         </View>
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

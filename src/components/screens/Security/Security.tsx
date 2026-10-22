@@ -2,8 +2,8 @@ import { Component } from "react";
 import {
   Animated,
   BackHandler,
-  ImageBackground
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { EventRegister } from "react-native-event-listeners";
 import { Actions } from '../../../navigation/RootNavigation';
 import { LanguageManager } from "../../../../LanguageManager";
@@ -54,9 +54,6 @@ class Security extends Component<any, any> {
     this.props.navigation.addListener('focus', (event: any) => {
       getData(Constants.DARK_MODE_STATUS).then(async (theme) => {
         this.setState({ themeSelected: theme });
-        const theme1 =
-          theme == 1 ? ThemeManager.colors.MainbgNew : Colors.newHeader;
-        EventRegister.emit("theme", theme1);
       });
       EventRegister.addEventListener("getThemeChanged", (data) => {
         this.setState({ themeSelected: data });
@@ -128,7 +125,7 @@ class Security extends Component<any, any> {
     const { referral, pins } = LanguageManager;
     const { themeSelected } = this.state;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -166,10 +163,6 @@ class Security extends Component<any, any> {
           imgIcon={ThemeManager.ImageIcons.rightArrow}
           hideBottom={false}
           onPress={() => {
-            EventRegister.emit(
-              "theme",
-              themeSelected == 2 ? Colors.White : ThemeManager.colors.Mainbg
-            );
             Actions.currentScene !== "EnterPinSecurity" &&
               (Actions as any).EnterPinSecurity({ from: "Security" });
           }}
@@ -185,10 +178,6 @@ class Security extends Component<any, any> {
           imgIcon={ThemeManager.ImageIcons.rightArrow}
           hideBottom={false}
           onPress={() => {
-            EventRegister.emit(
-              "theme",
-              themeSelected == 2 ? Colors.White : ThemeManager.colors.Mainbg
-            );
             Actions.currentScene !== "AutoLock" &&
               (Actions as any).AutoLock();
           }}
@@ -212,7 +201,7 @@ class Security extends Component<any, any> {
           }}
         />
         <LoaderView isLoading={this.state.isLoading} />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

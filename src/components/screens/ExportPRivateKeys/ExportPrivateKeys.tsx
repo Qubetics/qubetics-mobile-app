@@ -1,4 +1,5 @@
-import { View, Text, FlatList, TouchableOpacity, ImageBackground, unstable_batchedUpdates } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, unstable_batchedUpdates } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { useEffect, useRef, useState } from 'react'
 import { ThemeManager } from '../../../../ThemeManager'
 import { HeaderMain, LoaderView, OnboardingHeadings } from '../../common'
@@ -66,7 +67,7 @@ const ExportPrivateKeys = ({ walletItem, pin }: {walletItem: any; pin: any}) => 
         toast.current?.show('Copied')
     }
     return (
-        <ImageBackground
+        <BackgroundImage
             source={ThemeManager.ImageIcons.mainBgImgNew}
             style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }} >
             <HeaderMain
@@ -104,7 +105,7 @@ const ExportPrivateKeys = ({ walletItem, pin }: {walletItem: any; pin: any}) => 
                 {...({ style: { backgroundColor: ThemeManager.colors.toastBg } } as any)}
             />
             <LoaderView isLoading={isLoading} />
-        </ImageBackground>
+        </BackgroundImage>
     )
 }
 

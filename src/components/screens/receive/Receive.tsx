@@ -5,9 +5,9 @@ import {
   TouchableOpacity,
   Share,
   ScrollView,
-  ImageBackground,
   Image,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from "./ReceiveStyle";
 import { AppAlert, Button, GradientBorderView, HeaderMain } from "../../common";
 import { ThemeManager } from "../../../../ThemeManager";
@@ -143,7 +143,7 @@ class Receive extends Component<any, any> {
     }
 
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -340,7 +340,7 @@ class Receive extends Component<any, any> {
           alertTxt={this.state.alertTxt}
           hideAlertDialog={() => this.setState({ showAlertDialog: false })}
         />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

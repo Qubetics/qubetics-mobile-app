@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
-import { BackHandler, Dimensions, FlatList, Image, ImageBackground, Platform, Text, TouchableOpacity, View } from 'react-native';
+import { BackHandler, Dimensions, FlatList, Image, Platform, Text, TouchableOpacity, View } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import DeviceInfo from 'react-native-device-info';
 import { EventRegister } from 'react-native-event-listeners';
 import { ActionConst, Actions } from '../../../navigation/RootNavigation';
@@ -216,7 +217,7 @@ class DefiAccessMain extends Component<any, any> {
   render() {
     const { walletMain, setting } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -389,7 +390,7 @@ class DefiAccessMain extends Component<any, any> {
         )}
         <LoaderView isLoading={this.state.isLoading} />
 
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

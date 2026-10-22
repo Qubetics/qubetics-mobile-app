@@ -1,12 +1,12 @@
 import {Component} from 'react';
 import {
   Image,
-  ImageBackground,
   ScrollView,
   Text,
   View,
   TouchableOpacity,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from './SendNftStyle';
 import {
   AddressModal,
@@ -350,7 +350,7 @@ class SendNft extends Component<any, any> {
 
   render() {
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
         <HeaderMain BackButtonText={LanguageManager.nftData.sendNFT} />
@@ -697,7 +697,7 @@ class SendNft extends Component<any, any> {
             }
           }}
         />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

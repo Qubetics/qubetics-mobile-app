@@ -8,8 +8,8 @@ import {
   FlatList,
   BackHandler,
   NativeModules,
-  ImageBackground,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from './MyWalletListStyles';
 import { ThemeManager } from '../../../../ThemeManager';
 import { LanguageManager } from '../../../../LanguageManager';
@@ -95,12 +95,6 @@ const MyWalletList = (props: any) => {
   useEffect(() => {
     EventRegister.emit('REFRESH_PAGE_STATE');
     checkHideBalance();
-
-    EventRegister.addEventListener('makerWalletCreated', () => {
-      getData(Constants.MULTI_WALLET_LIST).then(multiWalletArray => {
-        setmultiwallet(JSON.parse(multiWalletArray));
-      });
-    });
 
     getData(Constants.MULTI_WALLET_LIST).then(multiWalletArray => {
       const parsed = JSON.parse(multiWalletArray);
@@ -315,7 +309,6 @@ const MyWalletList = (props: any) => {
       saveData(Constants.DARK_MODE_STATUS, 1);
       ThemeManager.setLanguage('darkMode');
       EventRegister.emit('getThemeChanged', 1);
-      EventRegister.emit('theme', '#0C0C0D');
       LanguageManager.setLanguage('English');
       Singleton.getInstance().userRefCode = '';
       (global as any).isDeepLink = false;
@@ -498,7 +491,6 @@ const MyWalletList = (props: any) => {
     );
     consoleLogFunc('CoinsList==2===', item.coinFamilyKeys);
 
-    EventRegister.emit('isMakerWallet', false);
     Singleton.getInstance().isMakerWallet = false;
     await saveDataInStorage(
       Constants.ADDRESS_LIST,
@@ -528,7 +520,6 @@ const MyWalletList = (props: any) => {
     });
 
     setTimeout(() => {
-      EventRegister.emit('makerWalletChange', false);
       consoleLogFunc('MWL_REQUEST_COINLIST');
       (store as any)
         .dispatch((requestCoinList as any)({}))
@@ -630,7 +621,7 @@ const MyWalletList = (props: any) => {
 
   return (
     <>
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
         <View style={{ flex: 1 }}>
@@ -765,7 +756,7 @@ const MyWalletList = (props: any) => {
           )}
           <LoaderView isLoading={loading} />
         </View>
-      </ImageBackground>
+      </BackgroundImage>
 
       {isSecretPhrase && (
         <CommonModal

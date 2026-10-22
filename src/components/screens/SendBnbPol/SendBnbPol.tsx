@@ -5,13 +5,13 @@ import {
   AppState,
   BackHandler,
   Image,
-  ImageBackground,
   Modal,
   Platform,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { EventRegister } from "react-native-event-listeners";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -958,7 +958,7 @@ class SendBnbPol extends Component<any, any> {
       LanguageManager;
     return (
       <KeyBoardAwareComp>
-        <ImageBackground
+        <BackgroundImage
           source={ThemeManager.ImageIcons.mainBgImgNew}
           style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
         >
@@ -1562,7 +1562,7 @@ class SendBnbPol extends Component<any, any> {
             />
             <LoaderView isLoading={this.state.isLoading} />
           </View>
-        </ImageBackground>
+        </BackgroundImage>
       </KeyBoardAwareComp>
     );
   }

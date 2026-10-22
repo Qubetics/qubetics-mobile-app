@@ -3,9 +3,9 @@ import {
   View,
   TouchableOpacity,
   Text,
-  ImageBackground,
   ScrollView,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from './VerifySecretPhraseStyles';
 import Toast from 'react-native-easy-toast';
 import {
@@ -147,7 +147,7 @@ const VerifySecretPhrase = (props: any) => {
   };
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
       <HeaderMain />
@@ -248,7 +248,7 @@ const VerifySecretPhrase = (props: any) => {
         style={{backgroundColor: ThemeManager.colors.toastBg}}
       />
       <LoaderView isLoading={loading} />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

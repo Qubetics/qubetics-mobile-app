@@ -4,13 +4,13 @@ import { Component } from "react";
 import {
   AppState,
   Image,
-  ImageBackground,
   Modal,
   Platform,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { EventRegister } from "react-native-event-listeners";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -700,7 +700,7 @@ class SendTrx extends Component<any, any> {
     consoleLogFunc('sendTron this.isMakerWallet ------', this.isMakerWallet)
     return (
       <KeyBoardAwareComp>
-        <ImageBackground
+        <BackgroundImage
           source={ThemeManager.ImageIcons.mainBgImgNew}
           style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
         >
@@ -1083,7 +1083,7 @@ class SendTrx extends Component<any, any> {
             />
             <LoaderView isLoading={this.state.isLoading} />
           </View>
-        </ImageBackground>
+        </BackgroundImage>
       </KeyBoardAwareComp>
     );
   }

@@ -1,10 +1,10 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {
   BackHandler,
-  ImageBackground,
   Platform,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {EventRegister} from 'react-native-event-listeners';
 import {ActionConst, Actions} from '../../../navigation/RootNavigation';
 import {LanguageManager} from '../../../../LanguageManager';
@@ -446,7 +446,7 @@ const VpnScreen = (props: any) => {
   }, []);
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
       <View style={styles.mainView}>
@@ -507,7 +507,7 @@ const VpnScreen = (props: any) => {
         <DvpnLoader isLoading={loading} />
         <AppAlert visible={alertModal} alertTxt={alertText} hideAlertDialog={hideAlert} />
       </View>
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

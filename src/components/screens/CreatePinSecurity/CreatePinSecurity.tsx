@@ -6,8 +6,8 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
-  ImageBackground,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from './CreatePinSecurityStyle';
 import { AppAlert, HeaderMain, OnboardingHeadings } from '../../common';
 import { Actions } from '../../../navigation/RootNavigation';
@@ -100,7 +100,7 @@ class CreatePinSecurity extends Component<any, any> {
   render() {
     const { pins } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -158,7 +158,7 @@ class CreatePinSecurity extends Component<any, any> {
           alertTxt={this.state.alertTxt}
           hideAlertDialog={() => { this.setState({ showAlertDialog: false }) }}
         />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

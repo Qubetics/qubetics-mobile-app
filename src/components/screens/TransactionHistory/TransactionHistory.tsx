@@ -3,13 +3,13 @@ import {Component} from 'react';
 import {
   BackHandler,
   Image,
-  ImageBackground,
   Platform,
   Share,
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import DeviceInfo from 'react-native-device-info';
 import {EventRegister} from 'react-native-event-listeners';
 import {Actions} from '../../../navigation/RootNavigation';
@@ -611,7 +611,7 @@ class TransactionHistory extends Component<any, any> {
     const {sendTrx} = LanguageManager;
     const {selectedCoin} = this.state;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
         <View style={{flex: 1}}>
@@ -657,7 +657,7 @@ class TransactionHistory extends Component<any, any> {
             onPressIcon={() => this.onPressStar()}
           />
           <View style={[styles.coinInfoTextt]}>
-            <ImageBackground
+            <BackgroundImage
               style={styles.gradient}
               source={ThemeManager.ImageIcons.homeSubBg}>
               <View style={{...styles.ViewStyle, marginTop: 0}}>
@@ -807,7 +807,7 @@ class TransactionHistory extends Component<any, any> {
 
               {/* *************Send Receive Swap **************** */}
 
-            </ImageBackground>
+            </BackgroundImage>
             <View style={styles.sendReceiveSwapview}>
               <View style={styles.styleRow}>
                 <View
@@ -1048,7 +1048,7 @@ class TransactionHistory extends Component<any, any> {
             }}
           />
         )}
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

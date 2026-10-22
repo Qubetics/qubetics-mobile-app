@@ -8,9 +8,9 @@ import {
   TouchableOpacity,
   Linking,
   Platform,
-  ImageBackground,
   Modal,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {
   consoleLogFunc,
   getData,
@@ -834,7 +834,7 @@ class DetailTransaction extends Component<any, any> {
     const { activeIndex } = this.state;
     return (
       <>
-        <ImageBackground
+        <BackgroundImage
           source={ThemeManager.ImageIcons.mainBgImgNew}
           style={{
             flex: 1,
@@ -966,7 +966,7 @@ class DetailTransaction extends Component<any, any> {
               );
             }}
           />
-        </ImageBackground>
+        </BackgroundImage>
         <AppAlert
           visible={this.state.showAlertDialog}
           showSuccess={this.state.showSuccess}

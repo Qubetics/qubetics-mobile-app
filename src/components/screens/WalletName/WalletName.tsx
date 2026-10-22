@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { View, ImageBackground } from 'react-native';
+import { View } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from './WalletNameStyles'
 
 import { AppAlert, Button, HeaderMain, Input, LoaderView, OnboardingHeadings } from '../../common';
@@ -65,7 +66,7 @@ const WalletName = (props: any) => {
 
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
     >
@@ -104,7 +105,7 @@ const WalletName = (props: any) => {
         hideAlertDialog={() => { setAlertModal(false) }}
       />
       <LoaderView isLoading={loading} />
-    </ImageBackground>
+    </BackgroundImage>
 
   );
 };

@@ -6,8 +6,8 @@ import {
   Image,
   Linking,
   BackHandler,
-  ImageBackground,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import DropShadow from 'react-native-drop-shadow';
 import styles from './DetailTransactionStyle';
 import { ThemeManager } from '../../../../ThemeManager';
@@ -69,7 +69,7 @@ const DetailCrossChain = (props: any) => {
 
   /******************************************************************************************/
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
 
@@ -117,7 +117,7 @@ const DetailCrossChain = (props: any) => {
       </TouchableOpacity>
 
       <LoaderView isLoading={isLoading} />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

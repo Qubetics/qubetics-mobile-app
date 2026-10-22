@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from './ManageStyle';
-import { View, Image, Text, TouchableOpacity, ImageBackground, Platform } from 'react-native';
+import { View, Image, Text, TouchableOpacity, Platform } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { Colors } from '../../../theme';
 import { Button, HeaderMain, LoaderView } from '../../common';
 import { Actions } from '../../../navigation/RootNavigation';
@@ -175,7 +176,7 @@ const Manage = (props: any) => {
   }
 
   return (
-    <ImageBackground
+    <BackgroundImage
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       source={ThemeManager.ImageIcons.mainBgImgNew}
     >
@@ -221,7 +222,7 @@ const Manage = (props: any) => {
         </View>
       </GestureHandlerRootView>
       {isLoading && <LoaderView isLoading={isLoading} />}
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

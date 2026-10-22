@@ -4,8 +4,8 @@ import {
   TouchableOpacity,
   Text,
   Image,
-  ImageBackground,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from "./OnboardingStyles";
 import { ThemeManager } from "../../../../ThemeManager";
 import { LanguageManager } from "../../../../LanguageManager";
@@ -44,7 +44,7 @@ const Onboarding = (props: any) => {
 
   return (
 
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1 }}
     >
@@ -96,7 +96,7 @@ const Onboarding = (props: any) => {
 
       </View>
 
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

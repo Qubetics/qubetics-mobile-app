@@ -1,11 +1,11 @@
 import {
   Image,
-  ImageBackground,
   Modal,
   StyleSheet,
   Text,
-  View
+  View,
 } from "react-native";
+import BackgroundImage from "./BackgroundImage";
 import { LanguageManager } from "../../../LanguageManager";
 import { ThemeManager } from "../../../ThemeManager";
 import Singleton from "../../Singleton";
@@ -58,7 +58,7 @@ export const ConfirmSwapCrosschain = (props: any) => {
       onRequestClose={props.handleBack}
     >
 
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -260,7 +260,7 @@ export const ConfirmSwapCrosschain = (props: any) => {
           alertTxt={props.alertTxt}
           hideAlertDialog={props.hideAlertDialog}
         />
-      </ImageBackground>
+      </BackgroundImage>
 
     </Modal>
   );

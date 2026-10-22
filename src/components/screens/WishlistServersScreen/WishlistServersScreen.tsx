@@ -2,9 +2,9 @@ import {useEffect, useState} from 'react';
 import {
   BackHandler,
   Dimensions,
-  ImageBackground,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {EventRegister} from 'react-native-event-listeners';
 import { ActionConst, Actions } from '../../../navigation/RootNavigation';
 import {connect} from 'react-redux';
@@ -106,7 +106,7 @@ const WishlistServersScreen = (props: any) => {
     setFilteredCountryList(list);
   };
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
       <View style={[styles.mainView]}>
@@ -151,7 +151,7 @@ const WishlistServersScreen = (props: any) => {
         </View>
         <DvpnLoader isLoading={loading} />
       </View>
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

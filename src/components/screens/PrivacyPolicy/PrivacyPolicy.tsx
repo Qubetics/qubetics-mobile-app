@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
-import {ImageBackground, Linking} from 'react-native';
+import { Linking } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {HeaderMain, LoaderView} from '../../common';
 import {connect} from 'react-redux';
 import {ThemeManager} from '../../../../ThemeManager';
@@ -16,7 +17,7 @@ const PrivacyPolicy = (props: any) => {
   }, []);
   /******************************************************************************************/
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
       <HeaderMain
@@ -76,7 +77,7 @@ const PrivacyPolicy = (props: any) => {
       />
 
       {isLoading == true && <LoaderView isLoading={isLoading} />}
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

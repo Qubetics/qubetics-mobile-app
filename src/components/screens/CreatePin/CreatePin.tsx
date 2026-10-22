@@ -4,11 +4,11 @@ import {
   BackHandler,
   FlatList,
   Image,
-  ImageBackground,
   Text,
   TouchableOpacity,
-  View
-} from 'react-native';
+  View,
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import Toast from 'react-native-easy-toast';
 import { EventRegister } from 'react-native-event-listeners';
 import { Actions } from '../../../navigation/RootNavigation';
@@ -159,7 +159,7 @@ class CreatePin extends Component<any, any> {
     const { pins } = LanguageManager;
 
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1,}}
       >
@@ -219,7 +219,7 @@ class CreatePin extends Component<any, any> {
           alertTxt={this.state.alertTxt}
           hideAlertDialog={() => { this.setState({ showAlertDialog: false }) }}
         />
-      </ImageBackground>
+      </BackgroundImage>
 
     );
   }

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import {
   Image,
-  ImageBackground,
   Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "./BackgroundImage";
 import { ThemeManager } from '../../../ThemeManager';
 import { dimen, heightDimen, widthDimen } from '../../Utils';
 import { Fonts, Images } from '../../theme';
@@ -216,7 +216,7 @@ const VpnGlobeComp = ({
         )}
       </View>
 
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.globe_img}
         style={styles.background}
         resizeMode="contain">
@@ -239,7 +239,7 @@ const VpnGlobeComp = ({
             Quick Connect
           </Text>
         )}
-      </ImageBackground>
+      </BackgroundImage>
       <AppAlert
         visible={alertModal}
         alertTxt={alertText}

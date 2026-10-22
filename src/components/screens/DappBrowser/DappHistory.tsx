@@ -1,4 +1,5 @@
-import { ImageBackground, FlatList } from 'react-native'
+import { FlatList } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { useEffect, useState } from 'react'
 import { ThemeManager } from '../../../../ThemeManager'
 import { HeaderMain, Item } from '../../common'
@@ -35,7 +36,7 @@ const DappHistory = (props: any) => {
     }
 
     return (
-        <ImageBackground source={ThemeManager.ImageIcons.mainBgImgNew}
+        <BackgroundImage source={ThemeManager.ImageIcons.mainBgImgNew}
             style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
             <HeaderMain
                 BackButtonText={"History"}
@@ -87,7 +88,7 @@ const DappHistory = (props: any) => {
                     }}
                 />
             )}
-        </ImageBackground>
+        </BackgroundImage>
     )
 }
 

@@ -6,13 +6,13 @@ import {
   AppState,
   BackHandler,
   Image,
-  ImageBackground,
   Modal,
   Platform,
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { EventRegister } from 'react-native-event-listeners';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -646,7 +646,7 @@ class SendCosmos extends Component<any, any> {
       LanguageManager;
     consoleLogFunc('this.isMakerWallet ------', this.isMakerWallet);
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
         <View style={{ flex: 1 }}>
@@ -1013,7 +1013,7 @@ class SendCosmos extends Component<any, any> {
           />
           <LoaderView isLoading={this.state.isLoading} />
         </View>
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

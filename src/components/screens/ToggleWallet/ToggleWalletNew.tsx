@@ -7,9 +7,9 @@ import {
   FlatList,
   RefreshControl,
   KeyboardAvoidingView,
-  ImageBackground,
   BackHandler,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {
   activeInactiveCoin,
   toogleCoinList
@@ -272,7 +272,7 @@ class ToggleWalletNew extends Component<any, any> {
   render() {
     const { walletMain } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
         source={ThemeManager.ImageIcons.mainBgImgNew}
       >
@@ -537,7 +537,7 @@ class ToggleWalletNew extends Component<any, any> {
             }}
           />
         </KeyboardAvoidingView>
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

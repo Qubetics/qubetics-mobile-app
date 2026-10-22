@@ -4,12 +4,12 @@ import { Component } from 'react';
 import {
   FlatList,
   Image,
-  ImageBackground,
   Modal,
   Text,
   TouchableOpacity,
-  View
-} from 'react-native';
+  View,
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { EventRegister } from 'react-native-event-listeners';
 import FastImage from 'react-native-fast-image';
@@ -175,7 +175,6 @@ class ConfirmPin extends Component<any, any> {
     })
 
     saveEncryptedData(Constants.PIN_LOCK, this.state.myPin, this.state.myPin);
-    EventRegister.emit('theme', ThemeManager.colors.colorVariation);
     consoleLogFunc('Singleton.getInstance().userRefCode::::::::', Singleton.getInstance().userRefCode);
     if ((global as any).isDeepLink == true) {
       if (Singleton.getInstance().refCode != Singleton.getInstance().userRefCode) {
@@ -244,7 +243,7 @@ class ConfirmPin extends Component<any, any> {
   render() {
     const { pins, commonText } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -351,7 +350,7 @@ class ConfirmPin extends Component<any, any> {
           alertTxt={this.state.alertTxt}
           hideAlertDialog={() => { this.setState({ showAlertDialog: false }) }}
         />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

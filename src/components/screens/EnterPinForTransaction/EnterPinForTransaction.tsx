@@ -3,12 +3,12 @@ import {
   BackHandler,
   FlatList,
   Image,
-  ImageBackground,
   ScrollView,
   Text,
   TouchableOpacity,
-  View
-} from 'react-native';
+  View,
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { EventRegister } from 'react-native-event-listeners';
 import { LanguageManager } from '../../../../LanguageManager';
@@ -169,7 +169,7 @@ class EnterPinForTransaction extends Component<any, any> {
   render() {
     const { pins } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -274,7 +274,7 @@ class EnterPinForTransaction extends Component<any, any> {
             }}
           />
         </ScrollView>
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

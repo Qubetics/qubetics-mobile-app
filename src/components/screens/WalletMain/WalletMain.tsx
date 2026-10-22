@@ -4,14 +4,14 @@ import {
   BackHandler,
   Dimensions,
   Image,
-  ImageBackground,
   Modal,
   Platform,
   RefreshControl,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import ReactNativeBiometrics from 'react-native-biometrics';
 import DeviceInfo from "react-native-device-info";
 import { EventRegister } from "react-native-event-listeners";
@@ -587,7 +587,7 @@ class WalletMain extends Component<any, any> {
   render() {
     const { walletMain, alertMessages } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -808,7 +808,7 @@ class WalletMain extends Component<any, any> {
         </View>
 
         <LoaderView isLoading={this.state.loading} />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

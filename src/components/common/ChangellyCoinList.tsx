@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import {
   FlatList,
   Image,
-  ImageBackground,
   Modal,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
+import BackgroundImage from "./BackgroundImage";
 import LinearGradient from "react-native-linear-gradient";
 import { useDispatch } from "react-redux";
 import { LanguageManager } from "../../../LanguageManager";
@@ -117,7 +117,7 @@ export const ChangellyCoinList = (props: any) => {
       onRequestClose={props.handleBack || props.onPressIn}
     >
 
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{
           flex: 1,
@@ -259,7 +259,7 @@ export const ChangellyCoinList = (props: any) => {
           </View>
         </View>
         <LoaderView isLoading={isLoading} />
-      </ImageBackground>
+      </BackgroundImage>
     </Modal>
   );
 };

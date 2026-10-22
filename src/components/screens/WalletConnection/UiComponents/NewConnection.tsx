@@ -1,4 +1,5 @@
-import { View, Text, Modal, ImageBackground, ScrollView, Image } from 'react-native'
+import { View, Text, Modal, ScrollView, Image } from "react-native";
+import BackgroundImage from "../../../common/BackgroundImage";
 import { useEffect, useState } from 'react'
 import { Button, HeaderMain, ManageItem } from '../../../common'
 import { LanguageManager } from '../../../../../LanguageManager'
@@ -48,7 +49,7 @@ const NewConnection = ({ isVisible, onClose, approveRequestData, approveConnecti
     }
     return (
         <Modal transparent={true} visible={isVisible} onRequestClose={onClose}>
-            <ImageBackground
+            <BackgroundImage
                 source={ThemeManager.ImageIcons.mainBgImgNew}
                 style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
             >
@@ -104,7 +105,7 @@ const NewConnection = ({ isVisible, onClose, approveRequestData, approveConnecti
                             approveConnection(address)}}
                         buttontext={LanguageManager.walletConnection.connect} />
                 </View>
-            </ImageBackground>
+            </BackgroundImage>
         </Modal>
     )
 }

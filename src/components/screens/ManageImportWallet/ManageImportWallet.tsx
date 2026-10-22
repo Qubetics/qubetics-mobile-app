@@ -2,12 +2,12 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import { useEffect, useRef, useState } from 'react';
 import {
   Image,
-  ImageBackground,
   Modal,
   Platform,
   TouchableOpacity,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import Toast from 'react-native-easy-toast';
 import { Actions } from '../../../navigation/RootNavigation';
 import { useDispatch } from 'react-redux';
@@ -187,7 +187,7 @@ const ManageImportWallet = (props: any) => {
   };
   return (
     <KeyBoardAwareComp>
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{
           flex: 1,
@@ -357,7 +357,7 @@ const ManageImportWallet = (props: any) => {
             }}
           />
         )}
-      </ImageBackground>
+      </BackgroundImage>
     </KeyBoardAwareComp>
   );
 };

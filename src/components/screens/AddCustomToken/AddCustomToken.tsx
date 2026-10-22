@@ -8,8 +8,8 @@ import {
   Modal,
   BackHandler,
   Platform,
-  ImageBackground,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from "./AddCustomTokenStyle";
 import {
   Button,
@@ -436,7 +436,7 @@ class AddCustomToken extends Component<any, any> {
       );
     /******************************************************************************************/
     return (
-      <ImageBackground
+      <BackgroundImage
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
         source={ThemeManager.ImageIcons.mainBgImgNew}
       >
@@ -672,7 +672,7 @@ class AddCustomToken extends Component<any, any> {
             this.hideAlert();
           }}
         />
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

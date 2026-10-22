@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react';
 import {
   Image,
-  ImageBackground,
   Text,
   TouchableOpacity,
   View,
   FlatList,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {ThemeManager} from '../../../../ThemeManager';
 import {Button, HeaderMain, LoaderView} from '../../common';
 import {LanguageManager} from '../../../../LanguageManager';
@@ -135,7 +135,7 @@ const Nft = () => {
   );
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
       <View style={{flex: 1}}>
@@ -203,7 +203,7 @@ const Nft = () => {
         </View>
       </View>
       <LoaderView isLoading={isLoading} />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

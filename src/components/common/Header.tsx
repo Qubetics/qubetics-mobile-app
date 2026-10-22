@@ -6,20 +6,10 @@ import { ThemeManager } from '../../../ThemeManager';
 import DeviceInfo from 'react-native-device-info';
 import { getDimensionPercentage as dimen } from '../../Utils';
 
-let deviceName = '';
 
 const Header = (props: any) => {
   const [, setThemeSelected] = useState(0);
 
-  //******************************************************************************************/
-  useEffect(() => {
-    getDeviceName();
-  }, [props]);
-
-  //******************************************************************************************/
-  const getDeviceName = async () => {
-    deviceName = await DeviceInfo?.getDeviceName();
-  };
 
   //******************************************************************************************/
   useEffect(() => {

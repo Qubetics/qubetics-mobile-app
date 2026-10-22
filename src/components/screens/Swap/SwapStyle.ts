@@ -25,7 +25,8 @@ export default StyleSheet.create({
   tab_inActiveStyleLeft: {
     justifyContent: 'center',
     height: "100%",
-    lex: 1, // BUG PRESERVED: "lex" is not a style key (typo for flex), cast to any below borderTopLeftRadius: 14, borderBottomLeftRadius: 14
+    borderTopLeftRadius: 14,
+    borderBottomLeftRadius: 14,
   },
   tab_inActiveStyleRight: {
     justifyContent: 'center',

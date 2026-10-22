@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { BackHandler, ImageBackground } from "react-native";
+import { BackHandler } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { EventRegister } from "react-native-event-listeners";
 import { Actions } from '../../../navigation/RootNavigation';
 import { ThemeManager } from "../../../../ThemeManager";
@@ -53,7 +54,7 @@ const ChainAbstraction = (props: any) => {
 
   /******************************************************************************************/
   return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -69,7 +70,7 @@ const ChainAbstraction = (props: any) => {
           }}
         />
 
-      </ImageBackground>
+      </BackgroundImage>
   );
 };
 

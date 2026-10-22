@@ -3,12 +3,12 @@ import {
   BackHandler,
   Dimensions,
   Image,
-  ImageBackground,
   Platform,
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import DeviceInfo from 'react-native-device-info';
 import { Actions } from '../../../navigation/RootNavigation';
 import { LanguageManager } from '../../../../LanguageManager';
@@ -74,7 +74,7 @@ class Portfolio extends Component<any, any> {
   render() {
     const { portfolio } = LanguageManager;
     return (
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -173,7 +173,7 @@ class Portfolio extends Component<any, any> {
             </View>
           </View>
         </View>
-      </ImageBackground>
+      </BackgroundImage>
     );
   }
 }

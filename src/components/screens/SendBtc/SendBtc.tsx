@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import Clipboard from "@react-native-clipboard/clipboard";
 import { Component } from "react";
-import { BackHandler, Image, ImageBackground, Modal, Text, TouchableOpacity, View } from "react-native";
+import { BackHandler, Image, Modal, Text, TouchableOpacity, View } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { EventRegister } from "react-native-event-listeners";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -680,7 +681,7 @@ class SendBtc extends Component<any, any> {
     } = LanguageManager;
     return (
       <KeyBoardAwareComp>
-        <ImageBackground
+        <BackgroundImage
           source={ThemeManager.ImageIcons.mainBgImgNew}
           style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
         >
@@ -1264,7 +1265,7 @@ class SendBtc extends Component<any, any> {
             />
             <LoaderView isLoading={this.state.isLoading} />
           </View>
-        </ImageBackground>
+        </BackgroundImage>
       </KeyBoardAwareComp>
     );
   }

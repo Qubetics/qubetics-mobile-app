@@ -5,9 +5,9 @@ import {
   Text,
   Platform,
   Modal,
-  ImageBackground,
   ScrollView,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from './ManageVerifySecretPhraseStyles';
 import Toast from 'react-native-easy-toast';
 import {
@@ -178,7 +178,7 @@ const ManageVerifySecretPhrase = (props: any) => {
   };
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
       <HeaderMain />
@@ -328,7 +328,7 @@ const ManageVerifySecretPhrase = (props: any) => {
           }}
         />
       )}
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

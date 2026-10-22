@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import {
   Dimensions,
   FlatList,
-  ImageBackground,
   Text,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { EventRegister } from 'react-native-event-listeners';
 import { Actions } from '../../../navigation/RootNavigation';
 import { connect } from 'react-redux';
@@ -129,7 +129,7 @@ const ServiceProvider = (props: any) => {
   };
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
       <View style={[styles.mainView]}>
@@ -210,7 +210,7 @@ const ServiceProvider = (props: any) => {
           }}
         />
       </View>
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

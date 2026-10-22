@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import {
   FlatList,
-  ImageBackground,
   Platform,
   StyleSheet,
   Text,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import DeviceInfo from 'react-native-device-info';
 import { Actions } from '../../../navigation/RootNavigation';
 import { EventRegister } from 'react-native-event-listeners';
@@ -184,7 +184,7 @@ const BuyCredit = ({ defaultWallet, userSubscription = {}, serviceProvider }: {d
   };
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: colors.mainBgNew }}>
       <View style={styles.mainView}>
@@ -301,7 +301,7 @@ const BuyCredit = ({ defaultWallet, userSubscription = {}, serviceProvider }: {d
         }}
       />
       <DvpnLoader isLoading={loading} />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

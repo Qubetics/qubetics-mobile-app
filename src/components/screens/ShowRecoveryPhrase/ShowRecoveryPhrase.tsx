@@ -5,8 +5,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  ImageBackground,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { useEffect, useRef, useState } from "react";
 import { ThemeManager } from "../../../../ThemeManager";
 import { HeaderMain, OnboardingHeadings } from "../../common";
@@ -45,7 +45,7 @@ const ShowRecoveryPhrase = ({ walletItem, pin }: { walletItem: any; pin: any }) 
     toast.current?.show("Copied");
   };
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={[styles.mainView, { backgroundColor: ThemeManager.colors.mainBgNew }]}
     >
@@ -127,7 +127,7 @@ const ShowRecoveryPhrase = ({ walletItem, pin }: { walletItem: any; pin: any }) 
         positionValue={250}
         {...({ style: { backgroundColor: ThemeManager.colors.toastBg } } as any)} // toast lib types lack `style`
       />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

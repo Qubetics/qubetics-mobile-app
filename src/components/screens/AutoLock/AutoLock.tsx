@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import {
   FlatList,
-  ImageBackground
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { EventRegister } from "react-native-event-listeners";
 
 import { LanguageManager } from "../../../../LanguageManager";
@@ -56,7 +56,7 @@ const AutoLock = () => {
   };
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
     >
@@ -90,7 +90,7 @@ const AutoLock = () => {
           );
         }}
       />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

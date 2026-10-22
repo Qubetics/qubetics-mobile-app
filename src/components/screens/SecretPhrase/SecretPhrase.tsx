@@ -4,10 +4,10 @@ import {
   TouchableOpacity,
   Text,
   Image,
-  ImageBackground,
   ScrollView,
   Dimensions,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from './SecretPhraseStyles';
 import { LanguageManager } from '../../../../LanguageManager';
 import { ThemeManager } from '../../../../ThemeManager';
@@ -47,7 +47,7 @@ const SecretPhrase = (props: any) => {
   return (
     <>
 
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -159,7 +159,7 @@ const SecretPhrase = (props: any) => {
           positionValue={250}
           {...({ style: { backgroundColor: ThemeManager.colors.toastBg } } as any)} // style not in Toast typings
         />
-      </ImageBackground >
+      </BackgroundImage >
 
       {isSecretPhrase && (
         <CommonModal

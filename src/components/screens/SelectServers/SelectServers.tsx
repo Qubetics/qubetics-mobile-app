@@ -3,10 +3,10 @@ import {
   BackHandler,
   Dimensions,
   FlatList,
-  ImageBackground,
   Platform,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {EventRegister} from 'react-native-event-listeners';
 import { ActionConst, Actions } from '../../../navigation/RootNavigation';
 import {connect} from 'react-redux';
@@ -427,7 +427,7 @@ const SelectServers = (props: any) => {
 
   return (
     <>
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
         <View style={[styles.mainView]}>
@@ -477,7 +477,7 @@ const SelectServers = (props: any) => {
             }
           }}
         />
-      </ImageBackground>
+      </BackgroundImage>
     </>
   );
 };

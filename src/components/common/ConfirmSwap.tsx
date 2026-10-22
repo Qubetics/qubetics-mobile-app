@@ -1,13 +1,13 @@
 import {
   Image,
-  ImageBackground,
   Modal,
   Platform,
   SafeAreaView,
   StyleSheet,
   Text,
-  View
-} from 'react-native';
+  View,
+} from "react-native";
+import BackgroundImage from "./BackgroundImage";
 import { LanguageManager } from '../../../LanguageManager';
 import { ThemeManager } from '../../../ThemeManager';
 import Singleton from '../../Singleton';
@@ -32,7 +32,7 @@ export const ConfirmSwap = (props: any) => {
       visible={props.showConfirmTxnModal}
       onRequestClose={props.handleBack}>
 
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew, }}
       >
@@ -146,7 +146,7 @@ export const ConfirmSwap = (props: any) => {
         <View style={{ justifyContent: 'flex-end', paddingHorizontal: heightDimen(24), marginBottom: heightDimen(30), backgroundColor: ThemeManager.colors.mainBgNew }}>
           <Button onPress={props.onPress} buttontext={props.text} />
         </View>
-      </ImageBackground>
+      </BackgroundImage>
       <SafeAreaView></SafeAreaView>
     </Modal>
   );

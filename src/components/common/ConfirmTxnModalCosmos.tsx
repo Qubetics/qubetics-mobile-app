@@ -1,4 +1,5 @@
-import { Image, ImageBackground, Modal, StyleSheet, Text, View } from 'react-native';
+import { Image, Modal, StyleSheet, Text, View } from "react-native";
+import BackgroundImage from "./BackgroundImage";
 import { LanguageManager } from '../../../LanguageManager';
 import { ThemeManager } from '../../../ThemeManager';
 import Singleton from '../../Singleton';
@@ -31,7 +32,7 @@ export const ConfirmTxnModalCosmos = (props: any) => {
       visible={props.showConfirmTxnModal}
       onRequestClose={props.handleBack}>
 
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, }}
       >
@@ -67,7 +68,7 @@ export const ConfirmTxnModalCosmos = (props: any) => {
                 <Text allowFontScaling={false} style={[styles.bal, { color: ThemeManager.colors.blackWhiteText }]}>{!!decimalPart ? '.' : ''}{decimalPart} {props.selectedCoin.coin_symbol.toUpperCase()}</Text> </Text>
             </View>
           </View>
-          <ImageBackground source={ThemeManager.ImageIcons.homeSubBg} style={[styles.ViewStyle1,]}>
+          <BackgroundImage source={ThemeManager.ImageIcons.homeSubBg} style={[styles.ViewStyle1,]}>
             <View style={[styles.ViewStyle,]}>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.legalGreyColor }]}>{commonText.Asset}</Text>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.blackWhiteText,flex:0.8,textAlign:'right' }]}>{props.selectedCoin.coin_name+' cosmos'}({props.selectedCoin.coin_symbol?.toUpperCase()})</Text>
@@ -80,9 +81,9 @@ export const ConfirmTxnModalCosmos = (props: any) => {
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.legalGreyColor }]}>{commonText.to}</Text>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.blackWhiteText }]}>{maskAddress(props.newObj.toAddress)}</Text>
             </View>
-          </ImageBackground>
+          </BackgroundImage>
 
-          <ImageBackground source={ThemeManager.ImageIcons.homeSubBg} style={[styles.ViewStyle1, { marginTop: heightDimen(11) }]}>
+          <BackgroundImage source={ThemeManager.ImageIcons.homeSubBg} style={[styles.ViewStyle1, { marginTop: heightDimen(11) }]}>
 
             <View style={[styles.ViewStyle, { borderBottomColor: ThemeManager.colors.underLineColor }]}>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.legalGreyColor }]}>{commonText.networkFee}</Text>
@@ -93,7 +94,7 @@ export const ConfirmTxnModalCosmos = (props: any) => {
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.legalGreyColor }]}>{'Gas Used'}</Text>
               <Text allowFontScaling={false} style={[styles.textStyle, { color: ThemeManager.colors.blackWhiteText }]}>{props.newObj.gasUsed}</Text>
             </View>   
-          </ImageBackground>
+          </BackgroundImage>
 
         </View>
 
@@ -102,7 +103,7 @@ export const ConfirmTxnModalCosmos = (props: any) => {
       <View style={{ justifyContent: 'flex-end', paddingHorizontal: 20, paddingBottom: heightDimen(50) }}>
         <Button onPress={props.onPress} buttontext={commonText.Confirm} />
       </View>
-      </ImageBackground>
+      </BackgroundImage>
     </Modal>
   );
 };

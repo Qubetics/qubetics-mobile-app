@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, BackHandler, TouchableOpacity, ImageBackground } from "react-native";
+import { View, Text, BackHandler, TouchableOpacity } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import styles from "./SwapStyle";
 import { AppAlert, HeaderMain } from "../../common";
 import { Images } from "../../../theme";
@@ -115,7 +116,7 @@ const Swap: any = (props: any) => {
   /******************************************************************************************/
   return (
     <>
-      <ImageBackground
+      <BackgroundImage
         source={ThemeManager.ImageIcons.mainBgImgNew}
         style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
       >
@@ -227,7 +228,7 @@ const Swap: any = (props: any) => {
             setAlertData({ isShow: false, msg: "" })
           }}
         />
-      </ImageBackground>
+      </BackgroundImage>
     </>
   );
 };

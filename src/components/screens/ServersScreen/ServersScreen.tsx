@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import {
   BackHandler,
-  ImageBackground,
   Pressable,
   ScrollView,
   Text,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { EventRegister } from 'react-native-event-listeners';
 import { ActionConst, Actions } from '../../../navigation/RootNavigation';
 import { connect } from 'react-redux';
@@ -154,7 +154,7 @@ const ServersScreen = (props: any) => {
     setFilteredCountryList(list);
   };
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}>
       <View style={[styles.mainView]}>
@@ -212,7 +212,7 @@ const ServersScreen = (props: any) => {
         </View>
         <DvpnLoader isLoading={loading} />
       </View>
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

@@ -1,8 +1,8 @@
 import styles from './RpcDetailsStyle';
 import {
-  ImageBackground,
   View,
-} from 'react-native';
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {useEffect, useState} from 'react';
 import {HeaderMain} from '../../common';
 import {LanguageManager} from '../../../../LanguageManager';
@@ -31,7 +31,7 @@ const RpcDetails = (props: any) => {
   }, []);
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
       <View style={[styles.mainView]}>
@@ -61,7 +61,7 @@ const RpcDetails = (props: any) => {
           />}
         </View>
       </View>
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

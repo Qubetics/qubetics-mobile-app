@@ -1,4 +1,5 @@
-import { View, Text, ImageBackground, Image, FlatList } from 'react-native'
+import { View, Text, Image, FlatList } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import { useEffect, useRef, useState } from 'react'
 import { ThemeManager } from '../../../../ThemeManager'
 import { Button, HeaderMain, LoaderView, ManageItem, OnboardingHeadings } from '../../common'
@@ -156,7 +157,6 @@ const WalletConnection = (props: any) => {
                                     "personal_sign",
                                     "eth_signTypedData",
                                     "eth_signTypedData_v4",
-                                    "eth_sign",
                                 ],
 
                             events: approveRequestData?.params?.requiredNamespaces['eip155']?.events || approveRequestData?.params?.optionalNamespaces['eip155']?.events,
@@ -262,7 +262,7 @@ const WalletConnection = (props: any) => {
     }
 
     return (
-        <ImageBackground
+        <BackgroundImage
             source={ThemeManager.ImageIcons.mainBgImgNew}
             style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
         >
@@ -382,7 +382,7 @@ const WalletConnection = (props: any) => {
             />
 
             <LoaderView isLoading={isLoading} />
-        </ImageBackground>
+        </BackgroundImage>
     )
 }
 

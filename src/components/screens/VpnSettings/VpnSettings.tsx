@@ -1,4 +1,5 @@
-import {ImageBackground, Platform, SectionList, Text, View} from 'react-native';
+import { Platform, SectionList, Text, View } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {useEffect, useState} from 'react';
 import {ThemeManager} from '../../../../ThemeManager';
 import {DvpnLoader, HeaderMain} from '../../common';
@@ -193,7 +194,7 @@ const VpnSettings = () => {
   };
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
       <View style={[styles.mainView]}>
@@ -224,7 +225,7 @@ const VpnSettings = () => {
         </View>
       </View>
       <DvpnLoader isLoading={loading} />
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 

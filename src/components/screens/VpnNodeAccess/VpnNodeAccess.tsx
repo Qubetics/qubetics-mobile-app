@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
-import {BackHandler, ImageBackground, View} from 'react-native';
+import { BackHandler, View } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {EventRegister} from 'react-native-event-listeners';
 import { ActionConst, Actions } from '../../../navigation/RootNavigation';
 import {connect} from 'react-redux';
@@ -94,7 +95,7 @@ const VpnNodeAccess = (props: any) => {
 
 
   return (
-    <ImageBackground
+    <BackgroundImage
       source={ThemeManager.ImageIcons.mainBgImgNew}
       style={{flex: 1, backgroundColor: ThemeManager.colors.mainBgNew}}>
       <View style={[styles.mainView]}>
@@ -111,7 +112,7 @@ const VpnNodeAccess = (props: any) => {
         </View>
         <LoaderView isLoading={loading} />
       </View>
-    </ImageBackground>
+    </BackgroundImage>
   );
 };
 
