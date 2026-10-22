@@ -27,6 +27,10 @@ class CreateWallet: NSObject {
    obj["mnemonics"] =  mnemonics
    obj["eth"] = ethObj
    obj["btc"] = btcObj
+   if let hdWallet = HDWallet(mnemonic: mnemonics, passphrase: "") {
+     obj["sol"] = deriveSolana(hdWallet: hdWallet)
+     obj["trx"] = deriveTron(hdWallet: hdWallet)
+   }
    callback([String(data: try! JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted), encoding: .utf8)!])
  }
   
@@ -45,9 +49,36 @@ class CreateWallet: NSObject {
     var obj = [String: [String: String]]()
     obj["eth"] = ethObj
     obj["btc"] = btcObj
+    if let hdWallet = HDWallet(mnemonic: mnemonicStr, passphrase: "") {
+      obj["sol"] = deriveSolana(hdWallet: hdWallet)
+      obj["trx"] = deriveTron(hdWallet: hdWallet)
+    }
     callback([String(data: try! JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted), encoding: .utf8)!])
   }
   
+  // Paths and key encodings mirror android WalletHandler.java (SOLANA_PATH / TRON_PATH).
+  private static let solanaPath = "m/44'/501'/0'"
+  private static let tronPath = "m/44'/195'/0'/0/0"
+
+  /// Solana address + base58 of the 64-byte secret key (ed25519 seed || public key).
+  func deriveSolana(hdWallet: HDWallet) -> [String: String] {
+    let key = hdWallet.getKey(coin: .solana, derivationPath: CreateWallet.solanaPath)
+    let secret64 = key.data + key.getPublicKeyEd25519().data
+    return [
+      "address": CoinType.solana.deriveAddress(privateKey: key),
+      "pvtKey": WalletCore.Base58.encodeNoCheck(data: secret64)
+    ]
+  }
+
+  /// Tron address + hex private key.
+  func deriveTron(hdWallet: HDWallet) -> [String: String] {
+    let key = hdWallet.getKey(coin: .tron, derivationPath: CreateWallet.tronPath)
+    return [
+      "address": CoinType.tron.deriveAddress(privateKey: key),
+      "pvtKey": key.data.map { String(format: "%02x", $0) }.joined()
+    ]
+  }
+
   func generateBip84Address(seed: Data, network: Network)-> [String: String]{
     let wallet = WalletBTC(seed: seed, network: network)
     let masterPrivateKey = wallet.privateKey
