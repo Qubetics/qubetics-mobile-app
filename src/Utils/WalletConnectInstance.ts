@@ -14,6 +14,15 @@ const core = new Core({
   projectId: WALLETCONNECT_PROJECT_ID!,
 });
 
+const SUPPORTED_REQUEST_METHODS = [
+  "eth_sendTransaction",
+  "personal_sign",
+  "eth_signTypedData",
+  "eth_signTypedData_v4",
+  "solana_signMessage",
+  "solana_signTransaction",
+];
+
 export default class WalletConnectInstance {
   static myInstance: WalletConnectInstance | null = null;
   // The SDK is used loosely below (see the .connected note), so the wallet is
@@ -241,8 +250,6 @@ export default class WalletConnectInstance {
           eip155: {
             methods: [
               "eth_sendTransaction",
-              "eth_signTransaction",
-              "eth_sign",
               "personal_sign",
               "eth_signTypedData",
               "eth_signTypedData_v4",
@@ -275,6 +282,19 @@ export default class WalletConnectInstance {
         });
 
         consoleLogFunc("✅ Responded to wallet_getCapabilities");
+        return;
+      }
+
+      const requestedMethod = payload?.params?.request?.method;
+      if (!SUPPORTED_REQUEST_METHODS.includes(requestedMethod)) {
+        await this.web3Wallet?.respondSessionRequest({
+          topic: payload?.topic,
+          response: {
+            id: payload?.id,
+            jsonrpc: "2.0",
+            error: { code: 5101, message: "Method not supported" },
+          },
+        });
         return;
       }
 
@@ -319,7 +339,26 @@ export default class WalletConnectInstance {
         EventRegister.emitEvent("sessionRequest", true);
         if (payload?.params?.request?.method.includes("eth_signTypedData")) {
           //Sign type data
-          let approvalParam = JSON.parse(payload?.params?.request?.params[1]);
+          const rawTyped = payload?.params?.request?.params[1];
+          let approvalParam: any;
+          try {
+            approvalParam = typeof rawTyped === "string" ? JSON.parse(rawTyped) : rawTyped;
+            const domainChain = approvalParam?.domain?.chainId;
+            const sessionChain = Number(payload?.params?.chainId?.toString()?.split(":")[1]);
+            if (!approvalParam?.types || (domainChain !== undefined && Number(domainChain) !== sessionChain)) {
+              throw new Error("Typed data chain mismatch");
+            }
+          } catch (typedError) {
+            await this.web3Wallet?.respondSessionRequest({
+              topic: payload?.topic,
+              response: {
+                id: payload?.id,
+                jsonrpc: "2.0",
+                error: { code: 5000, message: "Invalid typed data or chain mismatch" },
+              },
+            });
+            return;
+          }
           let typeArr = Object.keys(approvalParam.types);
           let newTypes: any = {};
           typeArr.map((el) => {
@@ -447,7 +486,6 @@ export default class WalletConnectInstance {
       } catch (error: any) {
       } finally {
         consoleLogFunc("-----------finally");
-        EventRegister.emitEvent("deleteAllSession", true);
       }
 
       setTimeout(() => {

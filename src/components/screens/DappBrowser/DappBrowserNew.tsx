@@ -9,8 +9,9 @@ import {
   Modal,
   TextInput,
   Keyboard,
-  ImageBackground,
-} from 'react-native';
+  ScrollView,
+} from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import {
   requestNonce,
   requestGasEstimation,
@@ -53,6 +54,7 @@ import DeviceInfo from 'react-native-device-info';
 import EnterPinForTransaction from '../EnterPinForTransaction/EnterPinForTransaction';
 import {getDappProvider} from '../../../Utils/etherProviderUtils';
 import {BlurView} from '@react-native-community/blur';
+import {getOrigin, reviewSignRequest} from '../../../Utils/DappSigningReview';
 const gasFeeMultiplier = 0.000000000000000001;
 const {sendTrx, browser, merchantCard} = LanguageManager;
 
@@ -86,6 +88,7 @@ class DappBrowserNew extends Component<any, any> {
       pinModal: false,
       msgType: '',
       signedData: '',
+      signReview: null,
       isShowEth: true,
       isShowBnb: true,
       isShowMatic: true,
@@ -363,11 +366,21 @@ class DappBrowserNew extends Component<any, any> {
       message.name == 'signMessage' ||
       message.name == 'signTypedMessage'
     ) {
-      consoleLogFunc('message.name==1', message.name);
-      this.setState({
-        signedData: message,
-        pinModal: true,
+      const review = reviewSignRequest({
+        name: message.name,
+        object: message.object,
+        origin: getOrigin(nativeEvent.url),
+        activeChainId: Number(this.state.chainId),
       });
+      if (!review.accepted) {
+        this.rejectSignRequest(message, review.reason);
+        this.setState({
+          showAlertDialog: true,
+          alertTxt: review.reason,
+        });
+        return;
+      }
+      this.setState({signedData: message, signReview: review});
     } else if (message.name == 'switchEthereumChain') {
       consoleLogFunc('message.name==', message.name);
       let mmid = message.id;
@@ -410,6 +423,104 @@ class DappBrowserNew extends Component<any, any> {
         },
       );
     }
+  };
+
+  rejectSignRequest = (message: any, reason: string) => {
+    if (message?.network !== 'ethereum' || !Number.isInteger(message?.id)) {
+      return;
+    }
+    this.webview?.injectJavaScript(
+      `trustwallet.ethereum.sendError(${message.id}, ${JSON.stringify(reason)});`,
+    );
+  };
+
+  dismissSignReview = () => {
+    this.rejectSignRequest(this.state.signedData, 'User rejected the request');
+    this.setState({signReview: null, signedData: '', pinModal: false});
+  };
+
+  confirmSignReview = () => {
+    this.setState({signReview: null, pinModal: true});
+  };
+
+  renderSignReviewModal = () => {
+    const review = this.state.signReview;
+    if (!review) return null;
+    const textColor = ThemeManager.colors.blackWhiteText;
+    return (
+      <Modal
+        transparent
+        animationType="fade"
+        visible
+        onRequestClose={this.dismissSignReview}>
+        <View style={styles.modalView}>
+          <View
+            style={[
+              styles.modalinner,
+              {
+                maxHeight: '80%',
+                borderColor: ThemeManager.colors.borderColor,
+                backgroundColor: ThemeManager.colors.whiteBlacktext,
+              },
+            ]}>
+            <Text style={[styles.titleSign, {color: textColor}]}>
+              {review.title}
+            </Text>
+            <Text style={[styles.txtValue, {color: textColor, width: '100%'}]}>
+              {review.origin}
+            </Text>
+            {review.warnings.map((warning: string) => (
+              <Text
+                key={warning}
+                style={[styles.txtValue, {color: '#E5484D', width: '100%'}]}>
+                {warning}
+              </Text>
+            ))}
+            <ScrollView style={{marginVertical: 10}}>
+              {review.details.map((detail: any) => (
+                <View key={detail.label} style={styles.vwSignTransaction}>
+                  <Text style={[styles.textLbl, {color: textColor}]}>
+                    {detail.label}
+                  </Text>
+                  <Text
+                    selectable
+                    style={[
+                      styles.txtValue,
+                      {color: ThemeManager.colors.placeholderColorNew},
+                    ]}>
+                    {detail.value}
+                  </Text>
+                </View>
+              ))}
+              <Text
+                selectable
+                style={[
+                  styles.txtValue,
+                  {
+                    width: '100%',
+                    marginTop: 8,
+                    color: ThemeManager.colors.placeholderColorNew,
+                  },
+                ]}>
+                {review.body}
+              </Text>
+            </ScrollView>
+            <View style={{gap: 10}}>
+              <Button
+                btnstyle={{borderRadius: 6}}
+                buttontext="Continue"
+                onPress={this.confirmSignReview}
+              />
+              <Button
+                btnstyle={{borderRadius: 6}}
+                buttontext="Reject"
+                onPress={this.dismissSignReview}
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
+    );
   };
 
   getRpcUrl(coinFamily: any) {
@@ -1089,7 +1200,7 @@ class DappBrowserNew extends Component<any, any> {
 
     return (
       <>
-        <ImageBackground
+        <BackgroundImage
           source={ThemeManager.ImageIcons.mainBgImgNew}
           style={{backgroundColor: ThemeManager.colors.mainBgNew}}>
           <View
@@ -1166,7 +1277,7 @@ class DappBrowserNew extends Component<any, any> {
             </View>
 
           </View>
-        </ImageBackground>
+        </BackgroundImage>
 
         <View style={{flex: 1}}>
           {this.state.jsContent !== '' && (
@@ -1532,6 +1643,8 @@ class DappBrowserNew extends Component<any, any> {
           }}
         />
 
+        {this.renderSignReviewModal()}
+
         <Modal
           animationType="slide"
           transparent={true}
@@ -1542,6 +1655,9 @@ class DappBrowserNew extends Component<any, any> {
           <View style={{flex: 1}}>
             <EnterPinForTransaction
               onBackClick={() => {
+                if (this.state.msgType?.startsWith('sign') && this.state.msgType !== 'signTransaction') {
+                  this.dismissSignReview();
+                }
                 this.setState({pinModal: false});
               }}
               checkBiometric={true}

@@ -10,7 +10,7 @@ const { stringToPath } = require("@cosmjss/crypto");
 const { DirectSecp256k1HdWallet } = require("@cosmjss/proto-signing");
 import { Bip39, EnglishMnemonic, Slip10, Slip10Curve } from "@cosmjss/crypto";
 import Singleton from "../Singleton";
-import { bigNumberFormat, consoleLogFunc } from "./MethodsUtils";
+import { bigNumberFormat, bigNumberSafeMath, consoleLogFunc } from "./MethodsUtils";
 
 const QUBETICS_RPC = Singleton.getInstance().COSMO_TICS_RPC_URL;
 const PREFIX = Constants.prefix;
@@ -54,6 +54,11 @@ const createSigning = async (mnemonic: any) => {
   return { client };
 };
 
+// Converts a TICS amount to its 18-decimal base unit as an integer string.
+// Done in BigNumber because `amount * 10 ** 18` exceeds float precision.
+const toBaseUnits = (amount: any): string =>
+  bigNumberFormat(bigNumberSafeMath(amount, "*", "1000000000000000000")).toFixed(0);
+
 export const estimateGasLimit = async (
   mnemonic: any,
   toAddress: any,
@@ -67,7 +72,7 @@ export const estimateGasLimit = async (
   const { client } = await createSigning(mnemonic);
 
   let address = fromAddress;
-  let amount_1 = Math.round(amount * 10 ** 18);
+  let amount_1 = toBaseUnits(amount);
   const message = {
     typeUrl: "/cosmos.bank.v1beta1.MsgSend",
     value: MsgSend.fromPartial({
@@ -120,7 +125,7 @@ export const broadcastTx = async ({
 
     const { client } = await createSigning(mnemonicsNew);
 
-    const amount_1 = Math.round(amount * 10 ** 18);
+    const amount_1 = toBaseUnits(amount);
     consoleLogFunc("amount_1--", amount_1);
 
     const msg = {

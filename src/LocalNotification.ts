@@ -6,9 +6,20 @@ import * as Constants from "./Constants";
 import { Actions } from './navigation/RootNavigation';
 
 let lastMessageId = 0
+const SKIP_PIN_TTL_MS = 5000;
  const notificationState = {
   fromNotificationPress: false,
   skipPinOnce: false,
+  skipPinExpiresAt: 0,
+};
+
+// The skip applies to one background-to-foreground transition and only while fresh.
+const consumeSkipPinOnce = () => {
+  const shouldSkip =
+    notificationState.skipPinOnce && Date.now() <= notificationState.skipPinExpiresAt;
+  notificationState.skipPinOnce = false;
+  notificationState.skipPinExpiresAt = 0;
+  return shouldSkip;
 };
 const showNotification = async (title: any, message: any, messageId: any) => {
   if (messageId != lastMessageId) {
@@ -60,6 +71,7 @@ const registerNotifeeListeners = async ()=>{
     if (type === EventType.PRESS) {
       notificationState.fromNotificationPress = true;
       notificationState.skipPinOnce = true;
+      notificationState.skipPinExpiresAt = Date.now() + SKIP_PIN_TTL_MS;
                   getData(Constants.PIN_LOCK).then((pinLock) => {
               const isLoggedIn = pinLock && pinLock != "null";
               isLoggedIn && Actions.currentScene != "Welcome" &&
@@ -72,4 +84,4 @@ const registerNotifeeListeners = async ()=>{
 }
 
 
-export {notificationState, showNotification, createNotificationChannel, registerNotifeeListeners }
+export {notificationState, consumeSkipPinOnce, showNotification, createNotificationChannel, registerNotifeeListeners }

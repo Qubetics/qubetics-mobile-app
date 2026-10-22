@@ -2,16 +2,17 @@
 import Clipboard from "@react-native-clipboard/clipboard";
 import { Component } from "react";
 import {
+  Alert,
   AppState,
   BackHandler,
   Image,
-  ImageBackground,
   Modal,
   Platform,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import BackgroundImage from "../../common/BackgroundImage";
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { EventRegister } from "react-native-event-listeners";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -58,6 +59,12 @@ import { LoaderView } from "../../common/LoaderView";
 import ContactsBook from "../ContactsBook/ContactsBook";
 import EnterPinForTransaction from "../EnterPinForTransaction/EnterPinForTransaction";
 import styles from "./SendStyle";
+import {
+  assessRecipient,
+  loadKnownRecipients,
+  rememberRecipient,
+  validateEvmAddress,
+} from "../../../Utils/AddressSafety";
 
 const rnBiometrics = new ReactNativeBiometrics();
 
@@ -342,6 +349,7 @@ class SendEth extends Component<any, any> {
         sendCoinReq,
       })
       .then((res: any) => {
+        rememberRecipient(toAddress.trim());
         consoleLogFunc('TransactionHistory------::::111:');
         (Actions as any).TransactionHistory({ type: ActionConst.REPLACE, selectedCoin: this.state.selectedCoin });
         this.setState({ isLoading: false });
@@ -362,10 +370,13 @@ class SendEth extends Component<any, any> {
         showAlertDialog: true,
         alertTxt: alertMessages.pleaseEnterWalletAddress,
       });
-    else if (!/^(0x){1}[0-9a-fA-F]{40}$/i.test(toAddress))
+    else if (validateEvmAddress(toAddress).status !== "ok")
       return this.setState({
         showAlertDialog: true,
-        alertTxt: alertMessages.pleaseEnterValidAddress,
+        alertTxt:
+          validateEvmAddress(toAddress).status === "bad-checksum"
+            ? "Address checksum is invalid. Check the address for typos."
+            : alertMessages.pleaseEnterValidAddress,
       });
     else if (
       toAddress.toLowerCase() ==
@@ -416,8 +427,24 @@ class SendEth extends Component<any, any> {
           2
         ),
       };
-      this.setState({ showConfirmModal: true, newObj: newObj });
+      this.confirmRecipientThenShow(newObj);
     }
+  }
+
+  /******************************************************************************************/
+  async confirmRecipientThenShow(newObj: any) {
+    const known = await loadKnownRecipients();
+    const risk = assessRecipient(this.state.toAddress.trim(), known);
+    const proceed = () => this.setState({ showConfirmModal: true, newObj });
+    if (risk.kind === "known") return proceed();
+    const message =
+      risk.kind === "lookalike"
+        ? `This address looks similar to one you sent to before (${risk.similarTo}) but is different. This is a common address-poisoning scam. Compare every character before continuing.`
+        : "You have not sent to this address before. Verify the full address before continuing.";
+    Alert.alert("Check recipient address", message, [
+      { text: "Cancel", style: "cancel" },
+      { text: "Continue", style: risk.kind === "lookalike" ? "destructive" : "default", onPress: proceed },
+    ]);
   }
 
   /******************************************************************************************/
@@ -646,7 +673,7 @@ class SendEth extends Component<any, any> {
     consoleLogFunc('this.isMakerWallet ------', this.isMakerWallet)
     return (
       <KeyBoardAwareComp>
-        <ImageBackground
+        <BackgroundImage
           source={ThemeManager.ImageIcons.mainBgImgNew}
           style={{ flex: 1, backgroundColor: ThemeManager.colors.mainBgNew }}
         >
@@ -1032,7 +1059,7 @@ class SendEth extends Component<any, any> {
             />
             <LoaderView isLoading={this.state.isLoading} />
           </View>
-        </ImageBackground>
+        </BackgroundImage>
       </KeyBoardAwareComp>
     );
   }

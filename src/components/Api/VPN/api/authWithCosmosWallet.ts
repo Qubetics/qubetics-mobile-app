@@ -3,16 +3,19 @@ import * as Constants from "../../../../Constants";
 import { getData, removeStorageItem, saveData } from "../../../../Utils/MethodsUtils";
 import { pinnedFetch } from "../../../../Utils/pinnedFetch";
 import Singleton from "../../../../Singleton";
+import { MAIN_URL } from "../../../../EndPoint";
 
 export const loginWithCosmosWallet = async ({
   wallet_address,
   pubKey,
   signatureBase64,
 }: {wallet_address: any; pubKey: any; signatureBase64: any}) => {
+  if(MAIN_URL?.includes("staging")){
   return {data: {
     accessToken: "temp", 
     refreshToken: "temp"
   }}
+}
   const body = {
     wallet_address,
     pubKey,

@@ -5,7 +5,9 @@ import {
     Text,
     TouchableOpacity,
     View,
+    ScrollView,
 } from "react-native";
+import { getOrigin, reviewWalletConnectRequest } from "../../../../Utils/DappSigningReview";
 import { Component } from "react";
 import { BlurView } from "@react-native-community/blur";
 import { Fonts, Images } from "../../../../theme";
@@ -115,8 +117,20 @@ class TransactionRequest extends Component<any, any> {
         const isMessageSign =
             signingData?.method != "eth_sendTransaction" &&
             signingData?.method != "solana_signMessage";
+        const reviewedMethod = signingData?.payload?.params?.request?.method;
+        const signReview =
+            reviewedMethod === "personal_sign" || reviewedMethod?.startsWith("eth_signTypedData")
+                ? reviewWalletConnectRequest({
+                      method: reviewedMethod,
+                      params: signingData?.payload?.params?.request?.params,
+                      origin: getOrigin(signingData?.payload?.verifyContext?.verified?.origin),
+                      chainId: String(signingData?.payload?.params?.chainId ?? ""),
+                      validation: signingData?.payload?.verifyContext?.verified?.validation,
+                  })
+                : null;
         this.setState(
             {
+                signReview,
                 hideFees: isMessageSign,
                 isShowReq: isShow,
                 signingData: signingData,
@@ -656,6 +670,35 @@ class TransactionRequest extends Component<any, any> {
                                     </TouchableOpacity>
                                 </View>
 
+                                {this.state.signReview?.accepted && (
+                                    <View style={{ gap: 8 }}>
+                                        <Text allowFontScaling={false} style={[styles.txtValue, { width: "100%", color: ThemeManager.colors.blackWhiteText }]}>
+                                            {this.state.signReview.origin}
+                                        </Text>
+                                        {this.state.signReview.warnings.map((warning: string) => (
+                                            <Text key={warning} allowFontScaling={false} style={[styles.txtValue, { width: "100%", color: "#E5484D" }]}>
+                                                {warning}
+                                            </Text>
+                                        ))}
+                                        {this.state.signReview.details.map((detail: any) => (
+                                            <View key={detail.label} style={styles.vwSignTransaction}>
+                                                <Text allowFontScaling={false} style={[styles.textLbl, { color: ThemeManager.colors.blackWhiteText }]}>
+                                                    {detail.label}
+                                                </Text>
+                                                <Text selectable allowFontScaling={false} style={[styles.txtValue, { color: ThemeManager.colors.lightGreyText }]}>
+                                                    {detail.value}
+                                                </Text>
+                                            </View>
+                                        ))}
+                                        <ScrollView style={{ maxHeight: 220 }}>
+                                            <Text selectable allowFontScaling={false} style={[styles.txtValue, { width: "100%", color: ThemeManager.colors.lightGreyText }]}>
+                                                {this.state.signReview.body}
+                                            </Text>
+                                        </ScrollView>
+                                    </View>
+                                )}
+
+                                {!this.state.signReview?.accepted && (<>
                                 <View style={styles.vwSignTransaction}>
                                     <Text
                                         allowFontScaling={false}
@@ -697,6 +740,7 @@ class TransactionRequest extends Component<any, any> {
                                         {this.state.transactionData?.from}
                                     </Text>
                                 </View>
+                                </>)}
 
                                 {!this.state.hideFees && (
                                     <View style={[styles.vwSignTransaction]}>

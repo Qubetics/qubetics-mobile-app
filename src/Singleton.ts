@@ -114,22 +114,7 @@ export default class Singleton {
   async getsignRawTxnDapp(pKey: any, toAmount: any, gas_gwei_price: any, gas_estimate: any, nonce: any, toAddress: any, myAddress: any, data: any, symbol: any) {
 
     try {
-      const EthRpcUrl = Singleton.getInstance().ETH_RPC_URL
-      const BscRpcUrl = Singleton.getInstance().BSC_RPC_URL
-      const MaticRpcUrl = Singleton.getInstance().MATIC_RPC_URL
-      const TicsRpcUrl = Singleton.getInstance().TICS_RPC_URL
-
-
-      let rpcUrl = EthRpcUrl;
-      if (symbol?.toLowerCase() == 'bnb') {
-        rpcUrl = BscRpcUrl;
-      } else if (symbol?.toLowerCase() == 'pol') {
-        rpcUrl = MaticRpcUrl;
-      } else if (symbol?.toLowerCase() == 'tics') {
-        rpcUrl = TicsRpcUrl;
-      }
-      // rpcUrl is kept for parity with the previous provider selection; signing is offline.
-      const amountToSend = ethers.parseEther(String(toAmount)); // BigNumber (wei)
+     const amountToSend = ethers.parseEther(String(toAmount)); // BigNumber (wei)
       const amount = ethers.toBeHex(amountToSend);
       let gasPrice = gas_gwei_price;
       gasPrice = (symbol?.toLowerCase() == 'bnb' || symbol?.toLowerCase() == 'pol' || symbol?.toLowerCase() == 'tics') ? gasPrice * 10 ** 9 : gasPrice

@@ -138,7 +138,7 @@ export const createEthRaw = async (
             nonce: nonce,
             to: to_address,
             value: amountToSend,
-            chainId: Constants.network == "testnet" ? "0x05" : "0x01",
+            chainId: "0x01",
             accessList: [],
             type: 2,
           })
@@ -150,7 +150,7 @@ export const createEthRaw = async (
             nonce: nonce,
             to: to_address,
             value: amountToSend,
-            chainId: Constants.network == "testnet" ? "0x05" : "0x01",
+            chainId: "0x01",
             accessList: [],
             type: 2,
           });
@@ -196,7 +196,7 @@ export const CreateEthTokenRaw = async (
     nonce,
     to: to_address,
     value: "0x0",
-    chainId: Constants.network == "testnet" ? "0x05" : "0x01",
+    chainId: "0x01",
     accessList: [],
     type: 2,
   };

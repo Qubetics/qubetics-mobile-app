@@ -126,7 +126,7 @@ function VpnTabs() {
 }
 
 // --- Root Stack Navigator ---
-const Router = ({ onRouteChanged }: { onRouteChanged: any }) => {
+const Router = ({ onRouteChanged }: { onRouteChanged?: any }) => {
   const [theme, setTheme] = useState<any>(ThemeManager.colors.mainBgNew);
 
   useEffect(() => {
@@ -183,7 +183,7 @@ const Router = ({ onRouteChanged }: { onRouteChanged: any }) => {
         <Stack.Screen name="SendBnbPol" component={wrapComponent(SendBnbPol)} />
         <Stack.Screen name="SendSol" component={wrapComponent(SendSol)} />
         <Stack.Screen name="Receive" component={wrapComponent(Receive)} />
-        <Stack.Screen name="EnterPin" component={wrapComponent(EnterPin)} />
+        <Stack.Screen name="EnterPin" component={wrapComponent(EnterPin)} options={{ gestureEnabled: false }} />
         <Stack.Screen name="CreatePin" component={wrapComponent(CreatePin)} />
         <Stack.Screen name="WalletMain" component={wrapComponent(WalletMain)} />
         <Stack.Screen name="Swap" component={wrapComponent(Swap)} />
@@ -202,7 +202,7 @@ const Router = ({ onRouteChanged }: { onRouteChanged: any }) => {
         <Stack.Screen name="Security" component={wrapComponent(Security)} />
         <Stack.Screen name="AddCustomToken" component={wrapComponent(AddCustomToken)} />
         <Stack.Screen name="DetailTransaction" component={wrapComponent(DetailTransaction)} />
-        <Stack.Screen name="EnterPinSecurity" component={wrapComponent(EnterPinSecurity)} />
+        <Stack.Screen name="EnterPinSecurity" component={wrapComponent(EnterPinSecurity)} options={{ gestureEnabled: false }} />
         <Stack.Screen name="CreatePinSecurity" component={wrapComponent(CreatePinSecurity)} />
         <Stack.Screen name="ConfirmPinSecurity" component={wrapComponent(ConfirmPinSecurity)} />
         <Stack.Screen name="UpdateWatchList" component={wrapComponent(UpdateWatchList)} />

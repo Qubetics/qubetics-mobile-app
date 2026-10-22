@@ -46,7 +46,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import WalletConnectInstance from "./Utils/WalletConnectInstance";
 import Toast from "react-native-easy-toast";
 import TransactionRequest from "./components/screens/WalletConnection/UiComponents/TransactionRequest";
-import { createNotificationChannel, notificationState, registerNotifeeListeners, showNotification } from "./LocalNotification";
+import { createNotificationChannel, notificationState, consumeSkipPinOnce, registerNotifeeListeners, showNotification } from "./LocalNotification";
 import PinAttempt from './components/screens/EnterPin/Common/PinAttempt';
 import * as RNScreenshotPrevent from 'react-native-screenshot-prevent';
 import { SCREENSHOT_PREVENT_URL } from './EndPoint';
@@ -57,6 +57,7 @@ const screenShotEmitter = new NativeEventEmitter(ScreenshotDelegate);
 let isFirstLaunch = true;
 export default class App extends Component<any, any> {
   appState: any;
+  backgroundedAtMonotonic: number | null = null;
   appStateListner: any;
   smartContractCallInterval: any;
   constructor(props: any) {
@@ -117,12 +118,10 @@ export default class App extends Component<any, any> {
           ? ThemeManager.setLanguage('darkMode')
           : ThemeManager.setLanguage('lightMode');
         EventRegister.emit('getThemeChanged', theme);
-        EventRegister.emit('theme', theme == 1 ? '#0C0C0D' : Colors.White);
         saveData(Constants.DARK_MODE_STATUS, theme);
       } else {
         ThemeManager.setLanguage('darkMode');
         EventRegister.emit('getThemeChanged', '1');
-        EventRegister.emit('theme', '#0C0C0D');
         saveData(Constants.DARK_MODE_STATUS, 1);
       }
     });
@@ -204,6 +203,8 @@ export default class App extends Component<any, any> {
     if (nextAppState == 'background') {
       let time = new Date().getTime();
       saveData(Constants.LAST_TIME, time);
+      // Monotonic reading: immune to clock changes, but may pause during device sleep.
+      this.backgroundedAtMonotonic = performance.now();
     }
 
     if (
@@ -216,9 +217,9 @@ export default class App extends Component<any, any> {
       Singleton.isPermission ? null : (Singleton.isCameraOpen = false);
     }
     if (this.appState == "background" && nextAppState == "active") {
-
-      // ✅ Skip PIN if navigation came from foreground notification
-      if (notificationState.skipPinOnce) {
+      // Skip PIN once if navigation came from a foreground notification press
+      if (consumeSkipPinOnce()) {
+        this.appState = nextAppState;
         return;
       }
 
@@ -237,29 +238,23 @@ export default class App extends Component<any, any> {
             }
             getData(Constants.PIN_TIMEOUT).then((timeOut: any) => {
               getData(Constants.LAST_TIME).then((res: any) => {
-                if (res) {
-                  let pin_timeout = timeOut || 0;
-                  let newTime = new Date().getTime();
-                  let diff = newTime - res;
-                  if (diff > pin_timeout) {
-                    setTimeout(() => {
-                      if (!notificationState.skipPinOnce) {
-                        Actions.currentScene != "EnterPin" &&
-                          (Actions as any).EnterPin();
-                      }
-                      // ✅ Now reset after timeout check
-                      notificationState.skipPinOnce = false;
-                    }, 20);
-                  }
-                } else {
+                const pin_timeout = timeOut || 0;
+                const diff = new Date().getTime() - res;
+                const monotonicDiff =
+                  this.backgroundedAtMonotonic === null
+                    ? 0
+                    : performance.now() - this.backgroundedAtMonotonic;
+                // Wall clock covers device sleep; a negative diff means the clock
+                // moved backwards. The monotonic diff covers clock tampering.
+                const shouldLock =
+                  !res ||
+                  diff < 0 ||
+                  diff > pin_timeout ||
+                  monotonicDiff > pin_timeout;
+                if (shouldLock) {
                   setTimeout(() => {
-                    if (!notificationState.skipPinOnce) {
-
-                      Actions.currentScene != "EnterPin" &&
-                        (Actions as any).EnterPin();
-                    }
-                    // ✅ Now reset after timeout check
-                    notificationState.skipPinOnce = false;
+                    Actions.currentScene != "EnterPin" &&
+                      (Actions as any).EnterPin();
                   }, 20);
                 }
               });
@@ -454,11 +449,7 @@ export default class App extends Component<any, any> {
                   ref={(refs) => { Singleton.getInstance().showToast = refs }}
                 />
                 <PinAttempt />
-                <Router
-                  onRouteChanged={() => {
-                    EventRegister.emit("screenChanged", Actions.currentScene);
-                  }}
-                />
+                <Router />
               </AppView>
             </SafeAreaProvider>
           </PersistGate>
