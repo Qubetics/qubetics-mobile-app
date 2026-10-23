@@ -12,7 +12,7 @@ mirroring how HDWalletKitBTC is already carried.
                        DESC
 
   s.homepage         = 'https://github.com/essentiaone/HDWallet'
-  s.license          = { :type => 'MIT' }
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'essentiaone' => 'https://github.com/essentiaone' }
   s.source           = { :git => 'https://github.com/essentiaone/HDWallet.git', :tag => s.version.to_s }
 

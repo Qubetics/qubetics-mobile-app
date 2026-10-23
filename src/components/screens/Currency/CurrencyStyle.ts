@@ -22,7 +22,8 @@ export default StyleSheet.create({
   imgStyle: {
     height: heightDimen(36),
     width: widthDimen(36),
-    resizeMode: 'contain',
+    borderRadius: widthDimen(18),
+    resizeMode: "contain"
   },
   ViewStyle: {
     width: '100%',

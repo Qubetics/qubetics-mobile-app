@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import BackgroundImage from "../../common/BackgroundImage";
 import { ThemeManager } from '../../../../ThemeManager';
-import { Colors } from '../../../theme';
 import { AppAlert, HeaderMain, OnboardingHeadings } from '../../common';
 import styles from './ConfirmPinSecurityStyle';
 import { EventRegister } from 'react-native-event-listeners';

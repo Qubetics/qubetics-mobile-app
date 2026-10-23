@@ -16,7 +16,7 @@ import { ThemeManager } from "../ThemeManager";
 import { Provider } from "react-redux";
 import NetInfo from "@react-native-community/netinfo";
 import { store, persistor } from "./Redux/Reducers";
-import { Colors, Images } from "./theme";
+import { Images } from "./theme";
 import { Actions } from './navigation/RootNavigation';
 import { getApp } from "@react-native-firebase/app";
 import {
@@ -46,7 +46,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import WalletConnectInstance from "./Utils/WalletConnectInstance";
 import Toast from "react-native-easy-toast";
 import TransactionRequest from "./components/screens/WalletConnection/UiComponents/TransactionRequest";
-import { createNotificationChannel, notificationState, consumeSkipPinOnce, registerNotifeeListeners, showNotification } from "./LocalNotification";
+import { createNotificationChannel, consumeSkipPinOnce, registerNotifeeListeners, showNotification } from "./LocalNotification";
 import PinAttempt from './components/screens/EnterPin/Common/PinAttempt';
 import * as RNScreenshotPrevent from 'react-native-screenshot-prevent';
 import { SCREENSHOT_PREVENT_URL } from './EndPoint';

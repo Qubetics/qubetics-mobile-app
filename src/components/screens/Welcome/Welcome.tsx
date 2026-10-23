@@ -18,7 +18,7 @@ import {ThemeManager} from '../../../../ThemeManager';
 import * as Constants from '../../../Constants';
 import {requestWalletLogin} from '../../../Redux/Actions';
 import Singleton from '../../../Singleton';
-import {Colors, Images} from '../../../theme/';
+import {Images} from '../../../theme/';
 import images from '../../../theme/Images';
 import {
   consoleLogFunc,

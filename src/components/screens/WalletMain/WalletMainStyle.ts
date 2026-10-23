@@ -1,9 +1,8 @@
 import { statusBarOffset } from '../../../Utils/StatusBarOffset';
-import { Dimensions, Platform, StyleSheet, StatusBar } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { ThemeManager } from '../../../../ThemeManager';
 import { Fonts } from '../../../theme/';
 import { dimen, getDimensionPercentage, heightDimen, widthDimen } from '../../../Utils';
-import DeviceInfo from 'react-native-device-info';
 export default StyleSheet.create({
   emptyView1: {
     alignSelf: 'center',

@@ -1,9 +1,8 @@
 import { statusBarOffset } from '../../../Utils/StatusBarOffset';
-import { Platform, StatusBar, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Colors, Fonts } from '../../../theme';
 import { ThemeManager } from '../../../../ThemeManager';
 import { dimen, getDimensionPercentage, heightDimen, widthDimen } from '../../../Utils';
-import DeviceInfo from 'react-native-device-info';
 
 const styles = StyleSheet.create({
   tab_wrapstyle: {

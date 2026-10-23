@@ -93,3 +93,6 @@ docs/
 
 # Yarn lockfile (untracked by request)
 yarn.lock
+
+# Swift Package Manager checkouts (resolved by Xcode)
+SourcePackages/

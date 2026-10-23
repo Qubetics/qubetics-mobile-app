@@ -1,9 +1,8 @@
 import { statusBarOffset } from '../../../Utils/StatusBarOffset';
-import { StyleSheet, Dimensions, Platform, StatusBar } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { ThemeManager } from '../../../../ThemeManager';
 import { Fonts } from '../../../theme';
 import { dimen, getDimensionPercentage, heightDimen, widthDimen } from '../../../Utils';
-import DeviceInfo from 'react-native-device-info';
 
 export default StyleSheet.create({
   emptyView: {

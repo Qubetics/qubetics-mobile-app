@@ -2,6 +2,7 @@ import { ethers, Wallet } from 'ethers';
 import { Alert, Platform } from 'react-native';
 import { openSettings, PERMISSIONS, request } from 'react-native-permissions';
 import { LanguageManager } from '../LanguageManager';
+import { SOL_RPC_URL as ENV_SOL_RPC_URL, TICS_RPC_URL as ENV_TICS_RPC_URL, COSMO_TICS_RPC_URL as ENV_COSMO_TICS_RPC_URL } from '@env';
 import { IS_PRODUCTION } from '../src/EndPoint';
 import * as Constants from './Constants';
 import { Images } from './theme';
@@ -40,9 +41,9 @@ export default class Singleton {
   BSC_RPC_URL = '';
   BTC_RPC_URL = '';
   MATIC_RPC_URL = '';
-  SOL_RPC_URL = 'https://api.mainnet-beta.solana.com';
-  TICS_RPC_URL = 'https://rpc.qubetics.com/'; //Fallback URL
-  COSMO_TICS_RPC_URL = '';
+  SOL_RPC_URL = ENV_SOL_RPC_URL ?? '';
+  TICS_RPC_URL = ENV_TICS_RPC_URL ?? ''; //Fallback URL
+  COSMO_TICS_RPC_URL = ENV_COSMO_TICS_RPC_URL ?? ''; //Fallback URL
   updateAlert: any = null;
   updateRefModal: any = null;
   updateAlertModal: any = null;

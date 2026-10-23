@@ -186,7 +186,7 @@ xcodebuild -workspace QubeticsWallet.xcworkspace -scheme QubeticsWallet -configu
 
 ## 🛡️ Reporting Security Issues
 
-Do not open a public issue for a vulnerability. Report it privately to the Qubetics team (contact address to be added before the public release) and allow time for a fix before disclosing.
+Do not open a public issue for a vulnerability. Report it privately through GitHub's private vulnerability reporting and allow time for a fix before disclosing. See [SECURITY.md](SECURITY.md).
 
 ## 🔏 Privacy
 

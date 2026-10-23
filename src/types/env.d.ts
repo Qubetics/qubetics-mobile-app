@@ -19,6 +19,9 @@ declare module '@env' {
   export const SWFT_BASE_URL: string | undefined;
   export const DVPN_BASE_URL: string | undefined;
   export const COSMO_RPC_URL: string | undefined;
+  export const SOL_RPC_URL: string | undefined;
+  export const TICS_RPC_URL: string | undefined;
+  export const COSMO_TICS_RPC_URL: string | undefined;
   export const WALLETCONNECT_PROJECT_ID: string | undefined;
   export const CHAIN_ABSTRACTION_BASE_URL: string | undefined;
   export const CHAIN_ABSTRACTION_API_KEY: string | undefined;

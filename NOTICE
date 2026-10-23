@@ -1,0 +1,27 @@
+Third-party components bundled in this repository
+
+1. trust-min.js (ios/trust-min.js, android/app/src/main/assets/trust-min.js)
+   Injected dApp provider bundle derived from Trust Wallet's trust-web3-provider
+   (https://github.com/trustwallet/trust-web3-provider), MIT License.
+   Copyright (c) Trust Wallet. The bundle also embeds other MIT-licensed
+   packages (e.g. base-x, blueimp-md5); their copyright and licence notices are
+   retained inside the bundle.
+
+2. ios/WireGuard/*.swift
+   Adapted from wireguard-apple (https://github.com/WireGuard/wireguard-apple),
+   MIT License. Copyright (c) 2018-2023 WireGuard LLC.
+
+3. Fonts (assets/fonts/DMSans-*.ttf)
+   DM Sans, Copyright 2014 The DM Sans Project Authors
+   (https://github.com/googlefonts/dm-fonts), SIL Open Font License 1.1
+   (https://openfontlicense.org).
+
+4. ios/HDWalletKit, ios/HDWalletKitBTC
+   HD wallet and Bitcoin key code derived from WalletKit (yuzushioh),
+   BitcoinKit, Evolution Group Ltd, Essentia and Pavlo Boiko's HDWalletKit,
+   all MIT. Copyright holders are listed in the LICENSE file in each folder.
+
+Permission notice (MIT) applies to the MIT-licensed components above: permission is hereby
+granted, free of charge, to any person obtaining a copy of the software to deal
+in it without restriction, subject to inclusion of the copyright and permission
+notice in all copies or substantial portions.

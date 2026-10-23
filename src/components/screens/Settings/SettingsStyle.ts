@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import { Fonts } from "../../../theme/";
 import {
   getDimensionPercentage as dimen,
-  getDimensionPercentage,
 } from "../../../Utils";
 
 export default StyleSheet.create({

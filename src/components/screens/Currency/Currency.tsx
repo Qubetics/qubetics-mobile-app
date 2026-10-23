@@ -152,7 +152,6 @@ class Currency extends Component<any, any> {
                           <View style={{ flexDirection: "row" }}>
                             <FastImage
                               style={styles.imgStyle}
-                              {...({ resizeMode: "contain" } as any)}
                               source={{
                                 uri:
                                   item.image?.includes("https") ||

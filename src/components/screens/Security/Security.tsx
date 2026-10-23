@@ -15,7 +15,7 @@ import {
   widthDimen
 } from "../../../Utils";
 import { consoleLogFunc, getData, saveData } from "../../../Utils/MethodsUtils";
-import { Colors, Images } from "../../../theme";
+import { Images } from "../../../theme";
 import {
   AppAlert,
   CardView,

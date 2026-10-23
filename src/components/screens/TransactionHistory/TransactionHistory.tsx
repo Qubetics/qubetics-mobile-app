@@ -39,14 +39,13 @@ import {
   getCurrencyPref,
 } from '../../../Redux/Actions';
 import styles from './TransactionHistoryStyle';
-import {Colors, Images} from '../../../theme';
+import {Images} from '../../../theme';
 import Singleton from '../../../Singleton';
 import {
   getDimensionPercentage,
 } from '../../../Utils';
 import {moderateScale, verticalScale} from '../../../layouts/responsive';
 import images from '../../../theme/Images';
-import colors from '../../../theme/Colors';
 
 // Brighter than the theme profit/loss colors so the 24h change stays readable on the dark coin card.
 const PRICE_CHANGE_PROFIT_COLOR = '#2EEA74';
