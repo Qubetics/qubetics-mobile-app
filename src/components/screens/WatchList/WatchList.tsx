@@ -6,7 +6,9 @@ import {
   TouchableOpacity,
   Dimensions,
   ScrollView,
+  Platform,
 } from 'react-native';
+import { initialWindowMetrics } from 'react-native-safe-area-context';
 import {
   CommaSeprator1,
   consoleLogFunc,
@@ -333,7 +335,7 @@ class WatchList extends Component<any, any> {
 
         <LoaderView customStyle={styles.customStyle} isLoading={this.state.isLoading} />
 
-        <View style={styles.ViewStyle2}>
+        <View style={[styles.ViewStyle2, { bottom: heightDimen(170) + (Platform.OS === 'ios' ? (initialWindowMetrics?.insets.bottom ?? 0) + 20 : 0) }]}>
           <Button
             myStyle={{ width: Dimensions.get('screen').width - 40 }}
             onPress={() => Actions.currentScene != 'UpdateWatchList' && (Actions as any).UpdateWatchList()}

@@ -4,13 +4,13 @@ import {
   Image,
   Modal,
   Pressable,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import { EventRegister } from 'react-native-event-listeners';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
 import { LanguageManager } from '../../../LanguageManager';
 import { ThemeManager } from '../../../ThemeManager';
@@ -27,6 +27,7 @@ export const FilterList = (props: any) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [list, setList] = useState(props.list?.list);
   const { isKeyboardOpen, keyboardHeight } = useKeyboard()
+  const { bottom: bottomInset } = useSafeAreaInsets();
 
   //******************************************************************************************/
   useEffect(() => {
@@ -62,10 +63,10 @@ export const FilterList = (props: any) => {
         blurAmount={2}
         reducedTransparencyFallbackColor="white"
       />
-      <SafeAreaView style={[styles.centeredView]}>
+      <View style={[styles.centeredView]}>
         <TouchableOpacity onPress={props.onPressIn} style={[styles.centeredView1]} />
 
-        <View style={[styles.modalView, { backgroundColor: ThemeManager.colors.mainBgNew }]}>
+        <View style={[styles.modalView, { backgroundColor: ThemeManager.colors.mainBgNew, paddingBottom: 20 + bottomInset }]}>
 
           <Pressable style={{ paddingVertical: 10 }} onPressIn={props.onPressIn}>
             <Image style={{ alignSelf: 'center', marginTop: 20, tintColor: ThemeManager.colors.primaryColor }} source={Images.modal_top_line} />
@@ -118,8 +119,7 @@ export const FilterList = (props: any) => {
           {isKeyboardOpen && <View style={{ height: keyboardHeight - 50 }} />}
 
         </View>
-      </SafeAreaView>
-      <SafeAreaView style={{ backgroundColor: ThemeManager.colors.bottomSheetColor }} />
+      </View>
     </Modal>
   );
 };

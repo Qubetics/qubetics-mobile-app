@@ -9,11 +9,13 @@ import {
 } from "react-native";
 import { ThemeManager } from "../../../ThemeManager";
 import { getDimensionPercentage as dimen } from "../../Utils";
+import { useKeyboard } from "../../hooks/useKeyboard";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const CommonModal = (props: any) => {
   const [mounted, setMounted] = useState(props.visible);
+  const { keyboardHeight } = useKeyboard();
   const translateY = useRef(new Animated.Value(SCREEN_HEIGHT)).current;
   const backdropOpacity = useRef(new Animated.Value(props.visible ? 1 : 0)).current;
 
@@ -107,7 +109,7 @@ const CommonModal = (props: any) => {
       <Pressable style={styles.backdropPressable} onPress={handleClose} />
 
       <Animated.View
-        style={[styles.sheet, { transform: [{ translateY }] }]}
+        style={[styles.sheet, { transform: [{ translateY }], paddingBottom: keyboardHeight }]}
         {...panResponder.panHandlers}
       >
         {props.headerContent}

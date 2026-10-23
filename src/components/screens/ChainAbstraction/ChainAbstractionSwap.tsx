@@ -112,6 +112,8 @@ const ChainAbstractionSwap = ({ themeSelected, navigation, isVisible }: {themeSe
   const [selectIndex, setSelectIndex] = useState<any>(null);
   const [selectIndexOne, setSelectIndexOne] = useState<any>(null);
   const [isMpcAddress, setIsMpcAddress] = useState(false);
+  // Set once the user taps "Generate Addresses"; stops the focus handler re-opening the prompt mid-flow.
+  const isGenerateFlowActiveRef = useRef(false);
   const [showCongratulationModal, setShowCongratulationModal] = useState(false);
   const [isFaitOnFrom, setIsFaitOnFrom] = useState(false);
 
@@ -146,6 +148,9 @@ const ChainAbstractionSwap = ({ themeSelected, navigation, isVisible }: {themeSe
       setModalVisible(false);
       setProcessingTransaction(false);
       setIsMpcAddress(false);
+      setShowPinModal(false);
+      setIsGenerateMpcAddress(false);
+      isGenerateFlowActiveRef.current = false;
       setConfirmAbstractionVisible(false)
       setShowCongratulationModal(false);
       showAlertDialogNew(false);
@@ -670,7 +675,9 @@ const ChainAbstractionSwap = ({ themeSelected, navigation, isVisible }: {themeSe
     consoleLogFunc("getMpcAddress>>11", isFirstTime);
     const mpcData = await getData(Constants.MPC_ADDRESS + Singleton.getInstance().defaultTicsAddress);
     if (isGeneratingMpcAddress && (mpcData == '' || mpcData == null || mpcData == undefined)) {
-      setIsMpcAddress(true);
+      if (!isGenerateFlowActiveRef.current) {
+        setIsMpcAddress(true);
+      }
     } else {
       const response = JSON.parse(mpcData);
       setIsMpcAddress(false);
@@ -690,6 +697,7 @@ const ChainAbstractionSwap = ({ themeSelected, navigation, isVisible }: {themeSe
         throw new Error('Failed to get valid user response');
       }
       isGeneratingMpcAddress = false;
+      isGenerateFlowActiveRef.current = false;
       // Extract derived addresses using utility method
       const derivedAddresses = extractDerivedAddresses(userResponse);
 
@@ -722,6 +730,7 @@ const ChainAbstractionSwap = ({ themeSelected, navigation, isVisible }: {themeSe
 
     } catch (err) {
       consoleLogFunc("mpcAddressApi error:", err);
+      isGenerateFlowActiveRef.current = false;
       showAlertDialog("Failed to generate MPC address");
     }
   };
@@ -886,6 +895,7 @@ const ChainAbstractionSwap = ({ themeSelected, navigation, isVisible }: {themeSe
                 setShowPinModal(false);
                 setIsMpcAddress(false);
                 if(isGenerateMpcAddress){
+                  isGenerateFlowActiveRef.current = false;
                   Actions.pop();
                   setIsGenerateMpcAddress(false);
                 }
@@ -973,6 +983,7 @@ const ChainAbstractionSwap = ({ themeSelected, navigation, isVisible }: {themeSe
             message={'MPC address is not set'}
             onContinue={() => {
               setIsMpcAddress(false);
+              isGenerateFlowActiveRef.current = true;
               setTimeout(() => {
                 setShowPinModal(true);
                 setIsGenerateMpcAddress(true);
@@ -981,6 +992,7 @@ const ChainAbstractionSwap = ({ themeSelected, navigation, isVisible }: {themeSe
             onClose={() => {
               setIsMpcAddress(false);
               setIsGenerateMpcAddress(false);
+              isGenerateFlowActiveRef.current = false;
               Actions.pop();
             }}
           />

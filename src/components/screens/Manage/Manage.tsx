@@ -88,7 +88,6 @@ const Manage = (props: any) => {
   };
 
   const renderItem = ({ item, getIndex, drag, isActive }: {item: any; getIndex: any; drag: any; isActive: any}) => {
-    const index = getIndex();
     return (
       <ScaleDecorator>
         <View
@@ -105,8 +104,8 @@ const Manage = (props: any) => {
             disabled={isActive}
             onLongPress={drag}
             delayLongPress={200}
-            style={[styles.ViewStyle, { marginBottom: index == coinList.length - 1 ? 15 : 15 }]}>
-            <View style={{ width: "10%" }}>
+            style={styles.ViewStyle}>
+            <View style={styles.coinImageWrap}>
               {item?.coin_image ? (<Image style={[styles.imgCoin, { borderRadius: 30, resizeMode: 'cover', backgroundColor: ThemeManager.colors.legalBg }]} source={{ uri: item?.coin_image }} />)
                 : (
                   <View style={[styles.ViewStyle2, { backgroundColor: ThemeManager.colors.legalBg }]}>
@@ -116,7 +115,7 @@ const Manage = (props: any) => {
             </View>
             <View style={[styles.ViewStyle3]}>
               <View style={styles.ViewStyle1}>
-                <Text allowFontScaling={false} style={[styles.txtCoin, { color: ThemeManager.colors.blackWhiteText }]}>
+                <Text numberOfLines={1} allowFontScaling={false} style={[styles.txtCoin, { color: ThemeManager.colors.blackWhiteText }]}>
                   {item?.coin_name?.toString().length > 12 ? item?.coin_name?.substring(0, 10) + '...' : item.coin_name}
                   {(item.is_token == 1 || item.coin_family == 1) && (<Text allowFontScaling={false} style={[styles.titleTextStyle, { color: ThemeManager.colors.blackWhiteText, fontSize: dimen(14) }]}>{item.coin_family == 1 ? ' (BEP-20)' : item.coin_family == 2 ? ' (ERC-20)' : item.coin_family == 4 ? ' (POL ERC-20)' : item.coin_family == 5 ? ' (SPL)' : item.coin_family == 6 ? ' (TRC-20)' : item.coin_family == 7 ? ' TICS' : ''}</Text>)}
                 </Text>
@@ -149,7 +148,7 @@ const Manage = (props: any) => {
                 </View>
               </View>
             </View>
-            <View style={{ width: "25%", paddingLeft: 5 }}>
+            <View style={styles.balanceWrap}>
               <Text
                 numberOfLines={1}
                 style={[styles.txtCoin, { color: ThemeManager.colors.blackWhiteText, fontSize: 14 }]}>
@@ -157,7 +156,7 @@ const Manage = (props: any) => {
               </Text>
               <Text
                 numberOfLines={1}
-                style={[styles.txtValue, { color: ThemeManager.colors.placeholderBg, alignSelf: 'flex-start', }]}>
+                style={[styles.txtValue, { color: ThemeManager.colors.placeholderBg, alignSelf: 'flex-end' }]}>
                 {Singleton.getInstance().CurrencySymbol}{toFixedExp(bigNumberSafeMath(item?.balance, "*", item?.coin?.fiat_price_data?.value || 0), 2)}
               </Text>
             </View>

@@ -233,21 +233,12 @@ class DappBrowserNew extends Component<any, any> {
     consoleLogFunc('connectWithDapp----provider', provider);
     this.web3 = provider;
     if (this.state.jsContent === '') {
-      if (Platform.OS === 'ios') {
-        RNFS.readFile(`${RNFS.MainBundlePath}/trust-min.js`, 'utf8').then(
-          content => {
-            this.setState({
-              jsContent: this.getJavascript(
-                this.state.chainId,
-                this.state.rpcUrl,
-                Singleton.getInstance().defaultEthAddress,
-                content,
-              ),
-            });
-          },
-        );
-      } else {
-        RNFS.readFileAssets(`trust-min.js`, 'utf8').then(content => {
+      const readTrustScript =
+        Platform.OS === 'ios'
+          ? RNFS.readFile(`${RNFS.MainBundlePath}/trust-min.js`, 'utf8')
+          : RNFS.readFileAssets(`trust-min.js`, 'utf8');
+      readTrustScript
+        .then(content => {
           this.setState({
             jsContent: this.getJavascript(
               this.state.chainId,
@@ -256,8 +247,12 @@ class DappBrowserNew extends Component<any, any> {
               content,
             ),
           });
+        })
+        .catch(error => {
+          consoleLogFunc('connectWithDapp----trust-min.js read failed', error);
+          // Mount the WebView without the injected provider rather than leaving the browser stuck on a blank screen.
+          this.setState({jsContent: ' '});
         });
-      }
     }
   }
 

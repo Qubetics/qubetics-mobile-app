@@ -26,6 +26,7 @@ export default StyleSheet.create({
     paddingRight: 5,
   },
   ViewStyle: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 16,
@@ -35,7 +36,17 @@ export default StyleSheet.create({
     paddingRight: 5,
     justifyContent: 'center',
   },
+  coinImageWrap: {
+    width: widthDimen(40),
+    alignItems: 'center',
+  },
+  balanceWrap: {
+    maxWidth: '32%',
+    paddingLeft: 5,
+    alignItems: 'flex-end',
+  },
   ViewStyle1: {
+    flex: 1,
     flexDirection: 'column',
     marginLeft: 13,
   },
@@ -49,9 +60,9 @@ export default StyleSheet.create({
   },
   ViewStyle3: {
     alignSelf: 'center',
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '65%',
     paddingVertical: 8,
   },
   txtCoin: {

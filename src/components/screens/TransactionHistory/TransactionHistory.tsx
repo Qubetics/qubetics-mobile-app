@@ -47,6 +47,10 @@ import {
 import {moderateScale, verticalScale} from '../../../layouts/responsive';
 import images from '../../../theme/Images';
 import colors from '../../../theme/Colors';
+
+// Brighter than the theme profit/loss colors so the 24h change stays readable on the dark coin card.
+const PRICE_CHANGE_PROFIT_COLOR = '#2EEA74';
+const PRICE_CHANGE_LOSS_COLOR = '#FF5A5F';
 import {updateWatchList} from '../../../Redux/Actions';
 import PortfolioButtonUntyped from '../../subcommon/atoms/PortfolioButton';
 // PortfolioButton is a JS component whose props are inferred as all-required
@@ -692,7 +696,7 @@ class TransactionHistory extends Component<any, any> {
                         style={[
                           styles.titleTextStyleNew,
                           {
-                            color: colors.lossColor,
+                            color: PRICE_CHANGE_LOSS_COLOR,
                             paddingLeft: 2,
                             paddingRight: 0,
                           },
@@ -703,7 +707,7 @@ class TransactionHistory extends Component<any, any> {
                         allowFontScaling={false}
                         style={[
                           styles.titleTextStyleNew,
-                          {color: colors.lossColor, paddingLeft: 2},
+                          {color: PRICE_CHANGE_LOSS_COLOR, paddingLeft: 2},
                         ]}>
                         {selectedCoin.price_change_percentage_24h
                           ? selectedCoin.price_change_percentage_24h
@@ -720,7 +724,7 @@ class TransactionHistory extends Component<any, any> {
                         allowFontScaling={false}
                         style={[
                           {
-                            color: Colors.profitColor,
+                            color: PRICE_CHANGE_PROFIT_COLOR,
                             marginBottom:
                               Platform.OS == 'ios'
                                 ? DeviceInfo.hasNotch() ||
@@ -736,7 +740,7 @@ class TransactionHistory extends Component<any, any> {
                         allowFontScaling={false}
                         style={[
                           styles.titleTextStyleNew,
-                          {color: (colors as any).darkGreen /* BUG PRESERVED: darkGreen not in theme colors */},
+                          {color: PRICE_CHANGE_PROFIT_COLOR},
                         ]}>
                         {selectedCoin.price_change_percentage_24h
                           ? selectedCoin.price_change_percentage_24h.toFixed(2)
