@@ -1,0 +1,25 @@
+diff --git a/node_modules/react-native-swipe-list-view/lib/commonjs/helpers.js b/node_modules/react-native-swipe-list-view/lib/commonjs/helpers.js
+index 98da0ac..5ad0748 100644
+--- a/node_modules/react-native-swipe-list-view/lib/commonjs/helpers.js
++++ b/node_modules/react-native-swipe-list-view/lib/commonjs/helpers.js
+@@ -3,10 +3,6 @@
+ Object.defineProperty(exports, "__esModule", {
+   value: true
+ });
+-exports.leftSwipeReleaseTarget = leftSwipeReleaseTarget;
+-exports.projectedExtraPixels = projectedExtraPixels;
+-exports.rightSwipeReleaseTarget = rightSwipeReleaseTarget;
+-exports.springConfigFromV3 = springConfigFromV3;
+ var _constants = require("./constants");
+ // Pure functions ported from v3 components/SwipeRow.js. All are worklets so the
+ // gesture-release path can run them on the UI thread; they behave identically
+@@ -118,3 +114,9 @@ function leftSwipeReleaseTarget(input) {
+   };
+ }
+ //# sourceMappingURL=helpers.js.map
++
++// Assigned after the (worklet-transformed, non-hoisted) function definitions.
++exports.leftSwipeReleaseTarget = leftSwipeReleaseTarget;
++exports.projectedExtraPixels = projectedExtraPixels;
++exports.rightSwipeReleaseTarget = rightSwipeReleaseTarget;
++exports.springConfigFromV3 = springConfigFromV3;

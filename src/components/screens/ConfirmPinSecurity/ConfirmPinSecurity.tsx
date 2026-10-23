@@ -111,12 +111,25 @@ class ConfirmPinSecurity extends Component<any, any> {
   }
 
   /******************************************************************************************/
-  continuePressed(pin: any) {
+  async continuePressed(pin: any) {
 
     // return
     if (pin == this.props.pin) {
-      this.updateSensitiveInfo(this.props?.oldPin, pin)
-      saveEncryptedData(Constants.PIN_LOCK, pin, pin);
+      try {
+        await this.updateSensitiveInfo(this.props?.oldPin, pin)
+        await saveEncryptedData(Constants.PIN_LOCK, pin, pin);
+      } catch (error) {
+        consoleLogFunc('PIN change failed', error);
+        this.setState({
+          myPin: '',
+          secretTxt: [false, false, false, false, false, false],
+          showAlertDialog: true,
+          alertTxt: LanguageManager.alertMessages.somethingWentWrong,
+          showButton: false,
+          showSuccess: false,
+        });
+        return;
+      }
       getData(Constants.BIOMETRIC_MODE).then(async bio_mode => {
         if (bio_mode == 'true') {
           await Singleton.getInstance().deleteKeyChainData()
@@ -148,26 +161,56 @@ class ConfirmPinSecurity extends Component<any, any> {
     }
   }
 
+  // Decrypts every entry with the old PIN before writing any, so a missing or
+  // corrupt record aborts the change instead of leaving a mix of old/new PIN entries.
   updateSensitiveInfo = async (oldPin: any, newPin: any) => {
-    let multiWallet = await getData(Constants.MULTI_WALLET_LIST)
-    let multiWalletData = JSON.parse(multiWallet)
-    multiWalletData.map(async (walletObj: any) => {
-      let ethPvtKey = await getEncryptedData(`${walletObj?.login_data?.defaultEthAddress}_pk`, oldPin);
-      await saveEncryptedData(`${walletObj?.login_data?.defaultEthAddress}_pk`, ethPvtKey, newPin);
-      let btcPvtKey = await getEncryptedData(`${walletObj?.login_data?.defaultBtcAddress}_pk`, oldPin);
-      await saveEncryptedData(`${walletObj?.login_data?.defaultBtcAddress}_pk`, btcPvtKey, newPin);
-      let tronPvtKey = await getEncryptedData(`${walletObj?.login_data?.defaultTrxAddress}_pk`, oldPin);
-      await saveEncryptedData(`${walletObj?.login_data?.defaultTrxAddress}_pk`, tronPvtKey, newPin);
-      let mnemonics = await getEncryptedData(`${walletObj?.login_data?.defaultEthAddress}`, oldPin);
-      await saveEncryptedData(walletObj?.login_data?.defaultSolAddress, mnemonics, newPin);
-      await saveEncryptedData(walletObj?.login_data?.defaultEthAddress, mnemonics, newPin);
-      setTimeout(() => {
-        ethPvtKey = ""
-        btcPvtKey = ""
-        tronPvtKey = ""
-        mnemonics = ""
-      }, 1500);
-    })
+    const multiWallet = await getData(Constants.MULTI_WALLET_LIST)
+    const multiWalletData = JSON.parse(multiWallet) ?? []
+    const readIfPresent = async (key: any) => {
+      if (!key) return null;
+      try {
+        return await getEncryptedData(key, oldPin);
+      } catch (error) {
+        consoleLogFunc('updateSensitiveInfo: skipping unreadable entry', key);
+        return null;
+      }
+    };
+
+    const pending: { key: string; value: string }[] = [];
+    for (const walletObj of multiWalletData) {
+      const login = walletObj?.login_data ?? {};
+      for (const address of [login.defaultEthAddress, login.defaultBtcAddress, login.defaultTrxAddress]) {
+        const pk = await readIfPresent(address && `${address}_pk`);
+        if (pk) pending.push({ key: `${address}_pk`, value: pk });
+      }
+      // Every chain address keeps its own mnemonic copy; all must move to the new PIN.
+      const mnemonics = await readIfPresent(login.defaultEthAddress);
+      if (mnemonics) {
+        for (const address of [login.defaultEthAddress, login.defaultBtcAddress, login.defaultTrxAddress, login.defaultSolAddress, login.defaultCosmosAddress]) {
+          if (address) pending.push({ key: address, value: mnemonics });
+        }
+      }
+    }
+
+    const written: { key: string; value: string }[] = [];
+    try {
+      for (const entry of pending) {
+        await saveEncryptedData(entry.key, entry.value, newPin);
+        written.push(entry);
+      }
+    } catch (error) {
+      // Put already-migrated entries back under the old PIN, which is still the lock PIN.
+      for (const { key, value } of written) {
+        try {
+          await saveEncryptedData(key, value, oldPin);
+        } catch (rollbackError) {
+          consoleLogFunc('updateSensitiveInfo: rollback failed', key);
+        }
+      }
+      throw error;
+    } finally {
+      pending.length = 0;
+    }
   }
   /******************************************************************************************/
   render() {
