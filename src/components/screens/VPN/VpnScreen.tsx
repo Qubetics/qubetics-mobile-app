@@ -323,7 +323,7 @@ const VpnScreen = (props: any) => {
 
   const fetchLocation = async (ip: any) => {
     try {
-      const response = await fetch(`http://ip-api.com/json/${ip}`);
+      const response = await fetch(`https://ipapi.co/${ip}/json/`);
       if (!response.ok) {
         setVpnLocation(null);
         return;
@@ -334,7 +334,7 @@ const VpnScreen = (props: any) => {
         return;
       }
       const data = await response.json();
-      setVpnLocation(data?.country || '');
+      setVpnLocation(data?.country_name || "");
     } catch (error: any) {
       console.error('Error fetching IP details:', error);
       setVpnLocation(null);

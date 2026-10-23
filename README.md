@@ -48,7 +48,7 @@ A comprehensive React Native crypto wallet application that supports multiple bl
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v22.13 or higher, see `engines` in package.json)
 - React Native CLI
 - Android Studio (for Android development)
 - Xcode (for iOS development)
@@ -183,6 +183,14 @@ xcodebuild -workspace QubeticsWallet.xcworkspace -scheme QubeticsWallet -configu
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+## 🛡️ Reporting Security Issues
+
+Do not open a public issue for a vulnerability. Report it privately to the Qubetics team (contact address to be added before the public release) and allow time for a fix before disclosing.
+
+## 🔏 Privacy
+
+The app talks to third-party services (Moralis proxy, ipapi.co, Firebase, Sentry, WalletConnect, TradingView and coin-data hosts). Link the published privacy policy here before release.
 
 ## 📄 License
 
